@@ -24,7 +24,7 @@ Drupal.behaviors.blockSettingsSummary = {
     $('fieldset#edit-node-type', context).drupalSetSummary(function (context) {
       var vals = [];
       $('input[type="checkbox"]:checked', context).each(function () {
-        vals.push($.trim($(this).next('label').text()));
+        vals.push($.trim($(this).next('label').html()));
       });
       if (!vals.length) {
         vals.push(Drupal.t('Not restricted'));
@@ -35,7 +35,7 @@ Drupal.behaviors.blockSettingsSummary = {
     $('fieldset#edit-role', context).drupalSetSummary(function (context) {
       var vals = [];
       $('input[type="checkbox"]:checked', context).each(function () {
-        vals.push($.trim($(this).next('label').text()));
+        vals.push($.trim($(this).next('label').html()));
       });
       if (!vals.length) {
         vals.push(Drupal.t('Not restricted'));
@@ -49,7 +49,7 @@ Drupal.behaviors.blockSettingsSummary = {
         return Drupal.t('Not customizable');
       }
       else {
-        return $radio.next('label').text();
+        return $radio.next('label').html();
       }
     });
   }
@@ -118,10 +118,18 @@ Drupal.behaviors.blockDrag = {
         tableDrag.rowObject = new tableDrag.row(row);
 
         // Find the correct region and insert the row as the last in the region.
-        table.find('.region-' + select[0].value + '-message').nextUntil('.region-message').last().before(row);
-
+        tableDrag.rowObject = new tableDrag.row(row[0]);
+        var region_message = table.find('.region-' + select[0].value + '-message');
+        var region_items = region_message.nextUntil('.region-message, .region-title');
+        if (region_items.length) {
+          region_items.last().after(row);
+        }
+        // We found that region_message is the last row.
+        else {
+          region_message.after(row);
+         }
         // Modify empty regions with added or removed fields.
-        checkEmptyRegions(table, row);
+        checkEmptyRegions(table, tableDrag.rowObject);
         // Remove focus from selectbox.
         select.get(0).blur();
       });

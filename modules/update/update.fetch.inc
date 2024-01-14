@@ -29,7 +29,9 @@ function update_manual_status() {
 }
 
 /**
- * Batch callback: Processes a step in batch for fetching available update data.
+ * Implements callback_batch_operation().
+ *
+ * Processes a step in batch for fetching available update data.
  *
  * @param $context
  *   Reference to an array used for Batch API storage.
@@ -77,7 +79,9 @@ function update_fetch_data_batch(&$context) {
 }
 
 /**
- * Batch callback: Performs actions when all fetch tasks have been completed.
+ * Implements callback_batch_finished().
+ *
+ * Performs actions when all fetch tasks have been completed.
  *
  * @param $success
  *   TRUE if the batch operation was successful; FALSE if there were errors.
@@ -151,6 +155,9 @@ function _update_process_fetch_task($project) {
 
   if (empty($fail[$fetch_url_base]) || $fail[$fetch_url_base] < $max_fetch_attempts) {
     $xml = drupal_http_request($url);
+    if (isset($xml->error)) {
+      watchdog('update', 'Error %errorcode (%message) occurred when trying to fetch available update data for the project %project.', array('%errorcode' => $xml->code, '%message' => $xml->error, '%project' => $project_name), WATCHDOG_ERROR);
+    }
     if (!isset($xml->error) && isset($xml->data)) {
       $data = $xml->data;
     }
