@@ -58,7 +58,7 @@ function media_include_browser_js() {
       // This will not handle all potential drupal_add_*() functions directly
       // but covers the js and library needed here, which are unlikely to be
       // expanded since this function is only a workaround for a wysiwyg limitation.
-      call_user_func_array($function, $definition);
+      call_user_func_array($function, array_values($definition));
     }
   }
   // Add wysiwyg-specific settings.
