@@ -1,0 +1,8 @@
+baseUrl: $PRIMARY_SITE_URL
+handle: default
+hasUrls: true
+language: nl
+name: Tarmac
+primary: true
+siteGroup: a7024844-b4d2-4359-b6c4-9e96d1410f28 # Tarmac
+sortOrder: 1
