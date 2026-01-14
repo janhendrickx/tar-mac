@@ -1,4 +1,4 @@
-dateModified: 1768224861
+dateModified: 1768414659
 email:
   fromEmail: website@tar-mac.be
   fromName: Tarmac
@@ -7,6 +7,11 @@ meta:
   __names__:
     a3d62d30-84eb-428e-9608-f556fb668979: Tarmac # Tarmac
     a7024844-b4d2-4359-b6c4-9e96d1410f28: Tarmac # Tarmac
+plugins:
+  wheelform:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.0.0
 system:
   edition: solo
   live: true
