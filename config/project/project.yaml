@@ -1,12 +1,16 @@
-dateModified: 1768418083
+dateModified: 1768492893
 email:
   fromEmail: website@tar-mac.be
   fromName: Tarmac
   transportType: craft\mail\transportadapters\Sendmail
 meta:
   __names__:
+    2a11be86-2613-4b12-9a8e-10dc9eca0936: Tickets # Tickets
     a3d62d30-84eb-428e-9608-f556fb668979: Tarmac # Tarmac
     a7024844-b4d2-4359-b6c4-9e96d1410f28: Tarmac # Tarmac
+    bf5b3ff2-3bf8-469a-abc8-9ed41965380e: Tekst # Tekst
+    d69e7ed5-a19d-4217-b60a-b4429c10f5ff: Intro # Intro
+    dde55f52-a313-4f67-ac94-159629bcc3c1: Tickets # Tickets
 plugins:
   wheelform:
     edition: standard
@@ -14,7 +18,7 @@ plugins:
     schemaVersion: 2.0.0
 system:
   edition: solo
-  live: false
+  live: true
   name: Tarmac
   retryDuration: null
   schemaVersion: 5.8.0.3

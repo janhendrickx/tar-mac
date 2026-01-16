@@ -1,0 +1,70 @@
+color: null
+description: null
+fieldLayouts:
+  b67bff09-269c-48ae-a788-b47d0a1f3768:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2026-01-15T15:55:41+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 0b43d59e-9972-45ae-b1c8-a655f8d02e77
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-01-15T15:57:32+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: bf5b3ff2-3bf8-469a-abc8-9ed41965380e # Tekst
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b6026a1a-cb92-4946-928a-5015eb58c7bf
+            userCondition: null
+            warning: null
+            width: 100
+        name: Inhoud
+        uid: b3686f46-5b53-42e6-8d8c-34f8800f8e0d
+        userCondition: null
+handle: intro
+hasTitleField: true
+icon: null
+name: Intro
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

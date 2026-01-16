@@ -1,0 +1,9 @@
+baseUrl: $TICKETS_URL
+enabled: '1'
+handle: tickets
+hasUrls: true
+language: nl
+name: Tickets
+primary: false
+siteGroup: a7024844-b4d2-4359-b6c4-9e96d1410f28 # Tarmac
+sortOrder: 2

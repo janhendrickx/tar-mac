@@ -1,0 +1,13 @@
+{% extends "_layout.twig" %}
+{% set picsPage = craft.entries().section('photogallery').one() %}
+{% set allPics = picsPage.photogallery.all() %}
+
+
+{% block content %}
+	{# {% include "_partials/_header.twig" %} #}
+
+	<main class="container mx-auto py-4">
+        <h1 class="text-center">Tickets optreden Affaire 28/02/2026</h1>
+	</main>
+	
+{% endblock %}
