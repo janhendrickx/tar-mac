@@ -1,0 +1,8 @@
+columnSuffix: null
+handle: form
+instructions: null
+name: Formulier
+searchable: false
+translationKeyFormat: null
+translationMethod: none
+type: wheelform\fields\FormField

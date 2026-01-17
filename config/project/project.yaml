@@ -1,12 +1,21 @@
-dateModified: 1768573399
+dateModified: 1768674697
 email:
-  fromEmail: website@tar-mac.be
+  fromEmail: info@tar-mac.be
   fromName: Tarmac
-  transportType: craft\mail\transportadapters\Sendmail
+  replyToEmail: null
+  template: null
+  transportSettings:
+    host: $SMTP_HOST
+    password: $SMTP_PASSWORD
+    port: '587'
+    useAuthentication: '1'
+    username: $SMTP_USERNAME
+  transportType: craft\mail\transportadapters\Smtp
 meta:
   __names__:
     2a11be86-2613-4b12-9a8e-10dc9eca0936: Tickets # Tickets
     a3d62d30-84eb-428e-9608-f556fb668979: Tarmac # Tarmac
+    a489d99e-553f-4af5-863d-0e65b8423a1a: Formulier # Formulier
     a7024844-b4d2-4359-b6c4-9e96d1410f28: Tarmac # Tarmac
     ae5775c3-6e0d-472d-89bf-78a0cb6e87d5: Simple # Simple
     bf5b3ff2-3bf8-469a-abc8-9ed41965380e: Tekst # Tekst
@@ -21,6 +30,17 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 2.0.0
+    settings:
+      cp_label: Forms
+      disabled_fields: ''
+      from_email: tickets@tar-mac.be
+      from_name: Tarmac
+      recaptcha_min_score: '0.5'
+      recaptcha_public: 6Lf_xU0sAAAAAD53T5t2ql5ceZ1s83nNT3VG5Dj7
+      recaptcha_secret: 6Lf_xU0sAAAAALIM1badVvmVZFwJiYqFoS-IZlhx
+      recaptcha_version: '2'
+      success_message: 'Bedankt voor je bestelling! In je mailbox vind je normaal alle verder info!'
+      volume_id: ''
 system:
   edition: solo
   live: true

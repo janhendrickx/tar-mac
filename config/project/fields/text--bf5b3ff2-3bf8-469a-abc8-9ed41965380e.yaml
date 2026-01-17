@@ -4,13 +4,23 @@ instructions: null
 name: Tekst
 searchable: true
 settings:
-  byteLimit: null
-  charLimit: null
-  code: false
-  initialRows: 4
-  multiline: true
-  placeholder: null
-  uiMode: normal
+  availableTransforms: ''
+  availableVolumes: ''
+  characterLimit: null
+  ckeConfig: null
+  createButtonLabel: null
+  defaultTransform: null
+  expandEntryButtons: false
+  fullGraphqlData: true
+  parseEmbeds: false
+  purifierConfig: null
+  purifyHtml: true
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  showWordCount: false
+  sourceEditingGroups:
+    - __ADMINS__
+  wordLimit: null
 translationKeyFormat: null
-translationMethod: site
-type: craft\fields\PlainText
+translationMethod: none
+type: craft\ckeditor\Field
