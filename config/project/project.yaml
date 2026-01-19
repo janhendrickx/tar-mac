@@ -1,4 +1,4 @@
-dateModified: 1768829271
+dateModified: 1768834781
 email:
   fromEmail: info@tar-mac.be
   fromName: Tarmac
@@ -29,6 +29,10 @@ meta:
     dde55f52-a313-4f67-ac94-159629bcc3c1: Tickets # Tickets
     f1e549a1-8d29-46e7-8a2b-61c927402b01: Afbeelding # Afbeelding
 plugins:
+  async-queue:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
   ckeditor:
     edition: standard
     enabled: true
