@@ -19,10 +19,12 @@
     We hebben je reservering voor {{ aantalTickets }} ticket{{ aantalTickets > 1 ? 's' : '' }} op naam van {{ naam }} goed ontvangen.
     <br>
     <p style="margin-top: 20px;">
-        <strong>Je bestelling is definitief zodra we de betaling van € {{ totaalPrijs|number_format(2, ',', '.') }} hebben ontvangen.</strong><br>
+        <strong>Zodra we de betaling van € {{ totaalPrijs|number_format(2, ',', '.') }} hebben ontvangen krijg je een bevestigingsmail en zullen je tickets klaarliggen aan de inkom.</strong>
+        <br>
         Je kunt dit overschrijven met volgende gegevens: <br>
-        VZW TARMAC <br>
+        <strong>Naam:</strong> VZW TARMAC<br>
         <strong>IBAN:</strong> BE41 7512 0433 7210 <br>
+        <strong>Bedrag: </strong>€ {{ totaalPrijs|number_format(2, ',', '.') }} <br>
         <strong>Vermelding</strong> <small>(naam + optreden AFFAIRE)</small><strong>:</strong> "{{ naam }} + optreden AFFAIRE"
     </p>
     <p style="margin-top: 20px;">Tot op 28 februari!<br>
