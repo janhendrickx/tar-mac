@@ -4,6 +4,7 @@ namespace modules;
 use Craft;
 use yii\base\Event;
 use yii\base\Module as BaseModule;
+use modules\jobs\GoogleSheetsJob; // Vergeet deze import niet!
 
 class Module extends BaseModule
 {
@@ -13,65 +14,44 @@ class Module extends BaseModule
         
         Craft::setAlias('@modules', __DIR__);
         
-        // Luister naar alle form submissions via Craft's mailer
         Event::on(
             \craft\mail\Mailer::class,
             \craft\mail\Mailer::EVENT_BEFORE_SEND,
             function(\yii\mail\MailEvent $event) {
-                // Check of het een Wheelform email is
                 if (isset($_POST['form_id'])) {
-                    // Haal de ontvanger(s) op
                     $to = $event->message->getTo();
                     $userEmail = $_POST['email'] ?? '';
                     
-                    // Alleen versturen als de email naar de gebruiker gaat (niet naar admin)
                     if (array_key_exists($userEmail, $to)) {
-                        $this->sendToGoogleSheets();
+                        // We roepen de functie aan die de taak in de wachtrij zet
+                        $this->queueGoogleSheetsJob();
                     }
                 }
             }
         );
     }
     
-    protected function sendToGoogleSheets()
+    protected function queueGoogleSheetsJob()
     {
-        // Haal POST data op
-        $firstName = $_POST['first_name'] ?? '';
-        $lastName = $_POST['last_name'] ?? '';
-        $email = $_POST['email'] ?? '';
-        $amount = $_POST['amount'] ?? '';
-        // Datum en tijd in gewenst formaat: "28/02 om 12u35"
-        $besteldOp = date('d/m') . ' om ' . date('H') . 'u' . date('i');
-        
-        if (empty($email)) {
-            return; // Geen formulier data
-        }
-        
-        // Jouw Google Apps Script URL
-        $webhookUrl = 'https://script.google.com/macros/s/AKfycbywjK_VHOcp09tQPiAF2rt0kv5sNL7OcI0Eovjb-XDyCuGvze90RHvT5bVWnngg7akf/exec';
-        
+        // 1. Verzamel de data (dit gaat razendsnel)
         $data = [
-            'besteldOp' => $besteldOp,
-            'voornaam' => $firstName,
-            'naam' => $lastName,
-            'email' => $email,
+            'besteldOp'     => date('d/m') . ' om ' . date('H') . 'u' . date('i'),
+            'voornaam'      => $_POST['first_name'] ?? '',
+            'naam'          => $_POST['last_name'] ?? '',
+            'email'         => $_POST['email'] ?? '',
             'mailVerstuurd' => 'J',
-            'tickets' => $amount,
+            'tickets'       => $_POST['amount'] ?? '',
         ];
         
-        Craft::info('Sending to Google Sheets: ' . json_encode($data), __METHOD__);
-        
-        $client = Craft::createGuzzleClient();
-        try {
-            $response = $client->post($webhookUrl, [
-                'json' => $data,
-                'timeout' => 10
-            ]);
-            
-            Craft::info('Google Sheets response: ' . $response->getBody(), __METHOD__);
-            
-        } catch (\Exception $e) {
-            Craft::error('Google Sheets webhook failed: ' . $e->getMessage(), __METHOD__);
-        }
+        $webhookUrl = 'https://script.google.com/macros/s/AKfycbywjK_VHOcp09tQPiAF2rt0kv5sNL7OcI0Eovjb-XDyCuGvze90RHvT5bVWnngg7akf/exec';
+
+        // 2. In plaats van zelf te posten, maken we een nieuwe Job aan
+        // Dit duurt slechts enkele milliseconden
+        Craft::$app->getQueue()->push(new GoogleSheetsJob([
+            'data' => $data,
+            'webhookUrl' => $webhookUrl,
+        ]));
+
+        Craft::info('Google Sheets Job toegevoegd aan queue', __METHOD__);
     }
 }
