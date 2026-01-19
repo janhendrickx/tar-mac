@@ -1,10 +1,15 @@
 {# Gebruik: {% include '_partials/forms/wheelform' with { form: wheelform.form('Contact') } %} #}
 
-{% macro errorList(errors) %}
+{% macro errorList(errors, fieldName) %}
     {% if errors %}
-        <ul class="mb-4 text-sm text-white font-extrabold">
+        {# col-span-full zorgt dat de error altijd onder het veld springt, ook bij 50% breedte #}
+        <ul class="col-span-full text-sm text-error font-extrabold list-none p-0 m-0 mb-2">
             {% for error in errors %}
-                <li><i>{{ error }}</i></li>
+                {% if fieldName == "amount" %}
+                    <li class="mt-1"><i>Selecteer het aantal tickets dat je wil reserveren.</i></li>
+                {% else %}
+                    <li class="mt-1"><i>{{ error }}</i></li>
+                {% endif %}
             {% endfor %}
         </ul>
     {% endif %}
@@ -12,74 +17,97 @@
 
 {% from _self import errorList %}
 
+{% if form.recaptcha and wheelform.settings.recaptcha_version == '3' %}
+    {{ wheelform.recaptchaV3({'action': 'reserveer-form'}) }}
+{% endif %}
 
+{% if craft.app.session.hasFlash('wheelformSuccess') %}  
+    {% if submission %}
+        {% set firstName = submission.fields.first_name.value ?? 0 %}
+        {% set email = submission.fields.email.value ?? 0 %}
+            <p>Hey  {{ firstName }}, </p>
+            <p> Bedankt voor je bestelling!
+                We hebben een e-mail gestuurd naar <u>{{ email }}</u> met alle gegevens om je reservering definitief te maken.
+            </p>
+    {% endif %}
+{% else %}
     {{ form.open() }}
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-6">
+    {% for field in form.fields %}
+        {# We bepalen hier de container klasse. Als hij leeg is in CMS, maken we hem breed. #}
+        {% set containerClass = field.containerClass ?: "md:col-span-2" %}
+        {% set required = field.required ? ' required' : '' %}
+        {% set fieldClass = field.fieldClass ?? "" %}
+        {% set hasError = wheelformErrors[field.name] is defined %}
+        {% set errorClasses = hasError ? 'ring-2 ring-primary' : 'ring-1 ring-gray-300' %}
 
-        {# We voegen handmatig een div toe voor de spacing die we eerder via de array wilden doen #}
-        <div class="space-y-2">
-            {# {{ form.anchor }} #}
+        {% switch field.type %}
+            {% case "checkbox" %}
+                <div class="form-checkbox {{ containerClass }}">
+                    {% if field.label %}<label class="block mb-1 font-bold">{{ field.label }}</label>{% endif %}
+                    {% for item in field.items %}
+                        <label class="inline-flex items-center mr-4{{ required }}">
+                            <input class="checkbox {{ fieldClass }} {{ errorClasses }}" type="checkbox" value="{{ item }}" {{values[field.name] is defined and item in values[field.name] ? ' checked="checked"' : '' }} name="{{field.name}}[]"/>
+                            <span class="ml-2">{{item}}</span>
+                        </label>
+                    {% endfor %}
+                    {{ wheelformErrors[field.name] is defined ? errorList(wheelformErrors[field.name]) }}
+                </div>
 
-        {% for field in form.fields %}
-            {% switch field.type %}
-                {% case "checkbox" %}
-                    <div class="form-checkbox">
+            {% case "radio" %}
+                <div class="form-radio {{ containerClass }}">
+                    {% if field.label %}<label class="block mb-1 font-bold{{ required }}">{{ field.label }}</label>{% endif %}
                     {% for item in field.items %}
-                    <label><input class="checkbox" type="checkbox" value="{{ item }}" {{values[field.name] is defined and item in values[field.name] ? ' checked="checked"' : '' }} name="{{field.name}}[]"/>{{item}}</label>
+                        <label class="inline-flex items-center mr-4">
+                            <input class="radio {{ fieldClass }} {{ errorClasses }}" type="radio" value="{{ item }}" {{values[field.name] is defined and item == values[field.name] ? ' checked="checked"' : '' }} name="{{field.name}}"/>
+                            <span class="ml-2">{{item}}</span>
+                        </label>
                     {% endfor %}
-                    </div>
-                {% case "radio" %}
-                    <div class="form-radio">
-                    {% for item in field.items %}
-                    <input class="radio" type="radio" value="{{ item }}" {{values[field.name] is defined and item == values[field.name] ? ' checked="checked"' : '' }} name="{{field.name}}"/>
-                    <label>{{item}}</label>
-                    {% endfor %}
-                    </div>
-                {% case "select" %}
-                    <div class="form-select">
+                    {{ wheelformErrors[field.name] is defined ? errorList(wheelformErrors[field.name]) }}
+                </div>
+
+            {% case "select" %}
+                <div class="form-select flex-row-layout {{ containerClass }}">
                     {% if field.label %}
-                        <label class="pe-5">{{ field.label }}</label>
+                        <label class="block mb-1 font-bold{{ required }}">{{ field.label }}</label>
                     {% endif %}
-                    <select id="wf-select" name="{{field.name}}" class="wf-field {{field.fieldClass}}">
-                    {% for item in field.items %}
-                        <option value="{{ item }}" {{values[field.name] is defined and item == values[field.name] ? 'selected="selected"' : '' }}>{{item}}</option>
-                    {% endfor %}
+                    
+                    <select id="wf-select" name="{{field.name}}" class="wf-field {{ fieldClass }} {{ errorClasses }} required">
+                        <option value="" disabled selected>Selecteer het gewenste aantal tickets</option>
+                        {% for item in field.items %}
+                            <option value="{{ item }}" {{values[field.name] is defined and item == values[field.name] ? 'selected="selected"' : '' }}>
+                                {{item}}
+                            </option>
+                        {% endfor %}
                     </select>
-                    </div>
-                {% case "file" %}
-                    <div class="form-group">
-                        <label>{{field.label}}</label>
-                        <input type="file" name="{{field.name}}">
-                    </div>
-                {% case "textarea" %}
-                    <div class="form-group">
-                        <label>{{field.label}}</label>
-                        <textarea class="form-control" name="{{field.name}}">{{ values[field.name] ?? '' }}</textarea>
-                    </div>
-                {% case "list" %}
-                    <div class="form-group">
-                        <label>{{field.label}}</label>
-                        <input type="text" name="{{field.name}}[]">
-                        <script>//Javascript to handle adding fields</script>
-                    </div>
-                {% default %}
-                    <div class="form-group">
-                    <label>{{field.label}}</label>
-                    <input class="form-control" type="{{field.type}}" value="{{ values[field.name] ?? '' }}" name="{{field.name}}">
-                    </div>
-            {% endswitch %}
-            {{ wheelformErrors[field.name] is defined ? errorList(wheelformErrors[field.name]) }}
-        {% endfor %}
+                    {{ wheelformErrors[field.name] is defined ? errorList(wheelformErrors[field.name], field.name) }}
+                </div>
 
-        {% if form.recaptcha %}
-            {{ wheelform.recaptchaV3({'action': 'bestelformulier'}) }}
-        {# Mocht recaptcha V2 toch nodig zijn: #}
-            {# <div>
-                <script src="https://www.google.com/recaptcha/api.js"></script>
-                <!-- Production captcha -->
-                <div class="g-recaptcha" data-sitekey="{{wheelform.getSettings('recaptcha_public')}}"></div>
-            </div> #}
-        {% endif %}
+            {% case "file" %}
+                <div class="form-group {{ containerClass }}">
+                    <label class="block mb-1 font-bold{{ required }}">{{field.label}}</label>
+                    <input class="w-full {{ fieldClass }} {{ errorClasses }}" type="file" name="{{field.name}}">
+                    {{ wheelformErrors[field.name] is defined ? errorList(wheelformErrors[field.name]) }}
+                </div>
 
-        <button class="btn btn-primary" id="submit">Bestel</button>
+            {% case "textarea" %}
+                <div class="form-group {{ containerClass }}">
+                    <label class="block mb-1 font-bold{{ required }}">{{field.label}}</label>
+                    <textarea class="form-control w-full {{ fieldClass }} {{ errorClasses }}" name="{{field.name}}">{{ values[field.name] ?? '' }}</textarea>
+                    {{ wheelformErrors[field.name] is defined ? errorList(wheelformErrors[field.name]) }}
+                </div>
+
+            {% default %}
+                <div class="form-group {{ containerClass }}">
+                    <label class="block mb-1 font-bold{{ required }}">{{field.label}}</label>
+                    <input class="form-control w-full {{ fieldClass }} {{ errorClasses }}" type="{{field.type}}" value="{{ values[field.name] ?? '' }}" name="{{field.name}}">
+                    {{ wheelformErrors[field.name] is defined ? errorList(wheelformErrors[field.name], field.name) }}
+                </div>
+        {% endswitch %}
+
+        {# Foutmeldingen onder het veld #}
+        {# {{ wheelformErrors[field.name] is defined ? errorList(wheelformErrors[field.name]) }} #}
+    {% endfor %}
     </div>
-    </form>
+    {{ form.close() }}
+{% endif %}

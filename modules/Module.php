@@ -40,6 +40,8 @@ class Module extends BaseModule
         $lastName = $_POST['last_name'] ?? '';
         $email = $_POST['email'] ?? '';
         $amount = $_POST['amount'] ?? '';
+        // Datum en tijd in gewenst formaat: "28/02 om 12u35"
+        $besteldOp = date('d/m') . ' om ' . date('H') . 'u' . date('i');
         
         if (empty($email)) {
             return; // Geen formulier data
@@ -49,9 +51,11 @@ class Module extends BaseModule
         $webhookUrl = 'https://script.google.com/macros/s/AKfycbywjK_VHOcp09tQPiAF2rt0kv5sNL7OcI0Eovjb-XDyCuGvze90RHvT5bVWnngg7akf/exec';
         
         $data = [
+            'besteldOp' => $besteldOp,
             'voornaam' => $firstName,
             'naam' => $lastName,
             'email' => $email,
+            'mailVerstuurd' => 'J',
             'tickets' => $amount,
         ];
         

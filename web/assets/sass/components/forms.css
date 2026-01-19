@@ -1,11 +1,33 @@
 /* web/assets/sass/components/forms.css */
 
+label.required::after {
+    @apply text-primary;
+    content: " *";
+}
+
+
 .form-label {
   @apply block text-sm font-medium mb-2 text-gray-900;
 }
 
-.form-control {
-  @apply block w-full rounded-md border-0 py-2 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm;
+.form-control, 
+.wf-field {
+  @apply block w-full rounded-md border-0 py-2 px-3 text-gray-900 shadow-sm ring-1 ring-inset sm:text-sm;
+  /* Jouw specifieke focus styling */
+  @apply focus:ring-2 focus:ring-inset focus:ring-primary;
+  /* Verwijder de blauwe browser-focus */
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary;
+  
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.wf-field {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.75rem center;
+  background-repeat: no-repeat;
+  background-size: 1.2em;
+  padding-right: 2.5rem;
 }
 
 /* De 'readonly' of 'disabled' staat uit Bootstrap */

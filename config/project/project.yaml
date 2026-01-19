@@ -1,4 +1,4 @@
-dateModified: 1768761672
+dateModified: 1768829271
 email:
   fromEmail: info@tar-mac.be
   fromName: Tarmac
@@ -7,10 +7,19 @@ email:
   transportSettings:
     command: '/usr/local/bin/mailpit sendmail -t --smtp-addr 127.0.0.1:1025'
   transportType: craft\mail\transportadapters\Sendmail
+fs:
+  images:
+    hasUrls: true
+    name: Afbeeldingen
+    settings:
+      path: '@webroot/uploads/images'
+    type: craft\fs\Local
+    url: $PRIMARY_SITE_URL/uploads/images
 meta:
   __names__:
     1ee0761f-66e1-4a6f-989c-9a99529fea4b: Hoofding # Hoofding
     2a11be86-2613-4b12-9a8e-10dc9eca0936: Tickets # Tickets
+    45b6867a-8b2b-4aa8-9497-0718c5eb402f: Afbeeldingen # Afbeeldingen
     a3d62d30-84eb-428e-9608-f556fb668979: Tarmac # Tarmac
     a489d99e-553f-4af5-863d-0e65b8423a1a: Formulier # Formulier
     a7024844-b4d2-4359-b6c4-9e96d1410f28: Tarmac # Tarmac
@@ -18,6 +27,7 @@ meta:
     bf5b3ff2-3bf8-469a-abc8-9ed41965380e: Tekst # Tekst
     d69e7ed5-a19d-4217-b60a-b4429c10f5ff: Intro # Intro
     dde55f52-a313-4f67-ac94-159629bcc3c1: Tickets # Tickets
+    f1e549a1-8d29-46e7-8a2b-61c927402b01: Afbeelding # Afbeelding
 plugins:
   ckeditor:
     edition: standard
@@ -28,7 +38,7 @@ plugins:
     enabled: true
     schemaVersion: 2.0.0
     settings:
-      cp_label: Forms
+      cp_label: Formulieren
       disabled_fields: ''
       from_email: tickets@tar-mac.be
       from_name: Tarmac

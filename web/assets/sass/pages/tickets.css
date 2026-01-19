@@ -1,12 +1,16 @@
 .tickets {
-    @apply text-white;
-    background-image: url(../img/affaire_2.jpeg);
+    @apply text-black;
+    background-image: url(../img/affaire_3.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     height: 100vh;
+    @screen(md) {
+        /* background-image: url(../img/affaire_3.jpeg); */
+        background-image: none;
+    }
 }
 
 .form-control {
-    @apply text-white;
+    /* @apply text-primary; */
 }

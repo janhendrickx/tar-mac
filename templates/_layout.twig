@@ -13,11 +13,11 @@
         <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Press+Start+2P&display=swap" rel="stylesheet">
+        {# <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Vina+Sans&display=swap" rel="stylesheet"> #}
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Vina+Sans&display=swap" rel="stylesheet">
 		<title>{{ siteName }}</title>
 	</head>
 	<body class="{{ bodyClass }}">
 		{% block content %}{% endblock %}
-		{# {% include "_partials/_scripts.twig" %} #}
 	</body>
 </html>

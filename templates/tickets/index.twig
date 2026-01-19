@@ -1,46 +1,54 @@
-{% set bodyClass = 'tickets' %}
 {% extends "_layout.twig" %}
+
+{% set bodyClass = 'tickets' %}
 {% set formId = entry.form.id %}
-{% set myForm = wheelform.form({
-    id: formId
+{% set affiche = entry.image.one() %}
+
+{% set afficheThumb = {
+    mode: 'fit',
+    height: 500,
+    width: 750,
+    quality: 100
+} %}
+
+{% set reserveerForm = wheelform.form({
+    id: formId,
+    submitButton: {
+    "type": "button",
+    "label": "Reserveer",
+    "attributes": { 
+        "class": "btn btn-primary mt-6",
+        "id": "reserveer",
+    },
+    
+}
 }) %}
 {% set submission = wheelform.lastSubmission ?? null %}
-{# {% set formId = wheelformField.formId ?? wheelformField.value ?? null %} #}
 
 {% block content %}
-	{# {% include "_partials/_header.twig" %} #}
-
 	<main class="min-h-screen flex items-center py-10">
         <div class="container mx-auto">
-            <div class="bg-primary/60 backdrop-blur-md border border-white/20 rounded-3xl p-8 md:p-12 shadow-2xl">
-                <h1 class="text-center font-heading text-xl mb-6">{{ entry.header }}</h1>
-                {% if craft.app.session.hasFlash('wheelformSuccess') %}  
-                        {% if submission %}
-                            {% set firstName = submission.fields.first_name.value ?? 0 %}
-                            {% set email = submission.fields.email.value ?? 0 %}
-                            
-                                <p>Hey  {{ firstName }}, </p>
-                                <p> Bedankt voor je bestelling!
-                                    We hebben een e-mail gestuurd naar <u>{{ email }}</u> met alle gegevens om je reservering definitief te maken.
-                                </p>
-                            
-                        {% endif %}
-                {% else %}
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-                    <div class="left-column">
-                        {{ entry.text }}
+            <div class="bg-white/70 backdrop-blur-md border border-primary/20 rounded-3xl p-8 md:p-12 shadow-2xl">
+                <h1 class="text-center text-primary font-heading mb-6">{{ entry.header }}</h1>
+                <div class="mb-4">{{ entry.text }}</div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                        <div class="left-column m-auto">
+                            <img src="{{ affiche.getUrl(afficheThumb) }}" alt="{{ affiche.title }}">
+                        </div>
+                        <div class="right-column">    
+                            <div class="pb-4">
+                                {{ entry.formText}}
+                            </div>
+                            {% include '_partials/forms/wheelform' with { form: reserveerForm } %}
+                        </div>
                     </div>
-                    <div class="right-column">
-                        
-                        {# {% set myForm = wheelform.form({
-                            id: formId,
-                            redirect: '/bedankt',
-                        }) %} #}
-                        {% include '_partials/forms/wheelform' with { form: myForm } %}
-                        
-                    </div>
-                </div>
-                {% endif %}
+                
+                    {# <div class='w-2/3 m-auto'>
+                        <div>{{ entry.formText}}</div>
+                        {% include '_partials/forms/wheelform' with { form: reserveerForm } %}
+                    </div> #}
+                
 		    </div>
 		</div>
 	</main>

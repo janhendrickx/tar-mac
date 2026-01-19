@@ -5,12 +5,13 @@
     --color-primary: #e60e48;
     --color-secondary: #000;
     --color-success: #00f;
+    --color-error: var(--color-primary);
 
     --container-center: true;
     --container-padding: 1rem;
 
-    --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
-    --font-heading: "Press Start 2P", system-ui;
+    --font-sans: "Merriweather", serif;
+    --font-heading: "Vina Sans", sans-serif;
 }
 
 /* Importeer je componenten HIER */
@@ -48,4 +49,19 @@
       max-width: 1320px;
     }
   }
+
+  h1,
+  h2 {
+    @apply tracking-wide;
+    @apply text-primary;
+  }  
+  
+  h1 {
+    @apply text-5xl;
+  }
+
+  h2 {
+    @apply text-3xl;
+  }
+
 }

@@ -38,6 +38,23 @@ fieldLayouts:
             warning: null
             width: 100
           -
+            dateAdded: '2026-01-19T13:05:54+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: f1e549a1-8d29-46e7-8a2b-61c927402b01 # Afbeelding
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: a0e509cb-7a77-4393-b6ec-735efb27bc72
+            userCondition: null
+            warning: null
+            width: 100
+          -
             dateAdded: '2026-01-18T18:41:12+00:00'
             editCondition: null
             elementCondition: null
@@ -68,6 +85,23 @@ fieldLayouts:
             tip: null
             type: craft\fieldlayoutelements\CustomField
             uid: b6026a1a-cb92-4946-928a-5015eb58c7bf
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-01-19T13:27:51+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: bf5b3ff2-3bf8-469a-abc8-9ed41965380e # Tekst
+            handle: formText
+            includeInCards: false
+            instructions: null
+            label: 'Tekst boven het formulier'
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: cfc06874-55c6-4cf5-803e-6ba10dad29cb
             userCondition: null
             warning: null
             width: 100

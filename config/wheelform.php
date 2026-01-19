@@ -1,6 +1,8 @@
 <?php
     return [
         // 'template' => '_emails/custom',
+        // notification for the site admins
+            'template' => '_emails/confirmation',
         'notification' => [
             'template' => '_emails/notification',
         ],
