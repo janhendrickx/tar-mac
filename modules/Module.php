@@ -4,7 +4,6 @@ namespace modules;
 use Craft;
 use yii\base\Event;
 use yii\base\Module as BaseModule;
-use modules\jobs\GoogleSheetsJob; // Vergeet deze import niet!
 
 class Module extends BaseModule
 {
@@ -23,17 +22,15 @@ class Module extends BaseModule
                     $userEmail = $_POST['email'] ?? '';
                     
                     if (array_key_exists($userEmail, $to)) {
-                        // We roepen de functie aan die de taak in de wachtrij zet
-                        $this->queueGoogleSheetsJob();
+                        $this->sendToGoogleSheetsFast();
                     }
                 }
             }
         );
     }
     
-    protected function queueGoogleSheetsJob()
+    protected function sendToGoogleSheetsFast()
     {
-        // 1. Verzamel de data (dit gaat razendsnel)
         $data = [
             'besteldOp'     => date('d/m') . ' om ' . date('H') . 'u' . date('i'),
             'voornaam'      => $_POST['first_name'] ?? '',
@@ -45,13 +42,23 @@ class Module extends BaseModule
         
         $webhookUrl = 'https://script.google.com/macros/s/AKfycbywjK_VHOcp09tQPiAF2rt0kv5sNL7OcI0Eovjb-XDyCuGvze90RHvT5bVWnngg7akf/exec';
 
-        // 2. In plaats van zelf te posten, maken we een nieuwe Job aan
-        // Dit duurt slechts enkele milliseconden
-        Craft::$app->getQueue()->push(new GoogleSheetsJob([
-            'data' => $data,
-            'webhookUrl' => $webhookUrl,
-        ]));
+        $client = Craft::createGuzzleClient();
 
-        Craft::info('Google Sheets Job toegevoegd aan queue', __METHOD__);
+        try {
+            // postAsync stuurt de data direct weg
+            $promise = $client->postAsync($webhookUrl, [
+                'json' => $data,
+                'timeout' => 2, // We wachten max 2 seconden als de verbinding traag is
+                'connect_timeout' => 2,
+            ]);
+
+            // De 'false' hier is cruciaal: het zegt "ga door met het script, 
+            // wacht niet op de volledige afhandeling van het HTTP verzoek"
+            $promise->wait(false);
+            
+            Craft::info('Google Sheets request afgevuurd.', __METHOD__);
+        } catch (\Exception $e) {
+            Craft::error('Google Sheets snelle verzending mislukt: ' . $e->getMessage(), __METHOD__);
+        }
     }
 }
