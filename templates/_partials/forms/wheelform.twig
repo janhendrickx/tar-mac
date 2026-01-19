@@ -21,16 +21,7 @@
     {{ wheelform.recaptchaV3({'action': 'reserveer-form'}) }}
 {% endif %}
 
-{% if craft.app.session.hasFlash('wheelformSuccess') %}  
-    {% if submission %}
-        {% set firstName = submission.fields.first_name.value ?? 0 %}
-        {% set email = submission.fields.email.value ?? 0 %}
-            <p>Hey  {{ firstName }}, </p>
-            <p> Bedankt voor je bestelling!
-                We hebben een e-mail gestuurd naar <u>{{ email }}</u> met alle gegevens om je reservering definitief te maken.
-            </p>
-    {% endif %}
-{% else %}
+
     {{ form.open() }}
     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-6">
     {% for field in form.fields %}
@@ -110,4 +101,4 @@
     {% endfor %}
     </div>
     {{ form.close() }}
-{% endif %}
+

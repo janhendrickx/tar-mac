@@ -31,24 +31,31 @@
             <div class="bg-white/70 backdrop-blur-md border border-primary/20 rounded-3xl p-8 md:p-12 shadow-2xl">
                 <h1 class="text-center text-primary font-heading mb-6">{{ entry.header }}</h1>
                 <div class="mb-4">{{ entry.text }}</div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-                        <div class="left-column m-auto">
-                            <img src="{{ affiche.getUrl(afficheThumb) }}" alt="{{ affiche.title }}">
-                        </div>
-                        <div class="right-column">    
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                    <div class="left-column m-auto">
+                        <img src="{{ affiche.getUrl(afficheThumb) }}" alt="{{ affiche.title }}">
+                    </div>
+                    <div class="right-column">    
+                        {% if craft.app.session.hasFlash('wheelformSuccess') %}  
+                            {% if submission %}
+                                {% set firstName = submission.fields.first_name.value ?? 0 %}
+                                {% set email = submission.fields.email.value ?? 0 %}
+                                    <div>
+                                        <h2 class="mb-4">Bedankt voor je bestelling</h2>
+                                        <p class="mb-4">Hey  {{ firstName }}, </p>
+                                        <p> Je bestelling is goed doorgekomen. <br>
+                                            We hebben een e-mail gestuurd naar <u>{{ email }}</u> met alle gegevens om je reservering definitief te maken.
+                                        </p>
+                                    </div>
+                            {% endif %}
+                        {% else %}
                             <div class="pb-4">
                                 {{ entry.formText}}
                             </div>
                             {% include '_partials/forms/wheelform' with { form: reserveerForm } %}
-                        </div>
+                        {% endif %}
                     </div>
-                
-                    {# <div class='w-2/3 m-auto'>
-                        <div>{{ entry.formText}}</div>
-                        {% include '_partials/forms/wheelform' with { form: reserveerForm } %}
-                    </div> #}
-                
+                </div>
 		    </div>
 		</div>
 	</main>
