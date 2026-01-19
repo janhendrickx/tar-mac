@@ -6,6 +6,7 @@ use craft\queue\BaseJob;
 
 class GoogleSheetsJob extends BaseJob
 {
+    // Deze variabelen worden gevuld vanuit Module.php
     public $data;
     public $webhookUrl;
 
@@ -15,10 +16,10 @@ class GoogleSheetsJob extends BaseJob
         try {
             $client->post($this->webhookUrl, [
                 'json' => $this->data,
-                'timeout' => 10,
+                'timeout' => 15,
             ]);
         } catch (\Exception $e) {
-            Craft::error('Google Sheets failed: ' . $e->getMessage(), __METHOD__);
+            Craft::error('Google Sheets Job failed: ' . $e->getMessage(), __METHOD__);
         }
     }
 
