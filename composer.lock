@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3da6ddd412f7bd1f2dcda062ad62cde7",
+    "content-hash": "7c3001ae934416e50465274a55f0811d",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -2860,68 +2860,6 @@
                 "source": "https://github.com/oscarotero/html-parser/tree/v0.1.8"
             },
             "time": "2023-11-29T20:28:41+00:00"
-        },
-        {
-            "name": "ostark/craft-async-queue",
-            "version": "4.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ostark/craft-async-queue.git",
-                "reference": "df8669950320802fec313125e85a11c7ae7cd64d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ostark/craft-async-queue/zipball/df8669950320802fec313125e85a11c7ae7cd64d",
-                "reference": "df8669950320802fec313125e85a11c7ae7cd64d",
-                "shasum": ""
-            },
-            "require": {
-                "craftcms/cms": "^5.0",
-                "php": "^8.0",
-                "symfony/process": "^5.0|^6.0"
-            },
-            "require-dev": {
-                "craftcms/phpstan": "*",
-                "craftcms/rector": "dev-main",
-                "phpunit/phpunit": "^8.0|^9.0"
-            },
-            "type": "craft-plugin",
-            "extra": {
-                "name": "AsyncQueue",
-                "handle": "async-queue",
-                "changelogUrl": "https://raw.githubusercontent.com/ostark/craft-async-queue/master/CHANGELOG.md",
-                "hasCpSection": false,
-                "hasCpSettings": false
-            },
-            "autoload": {
-                "psr-4": {
-                    "ostark\\AsyncQueue\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Oliver Stark",
-                    "homepage": "https://www.fortrabbit.com"
-                }
-            ],
-            "description": "A queue handler that moves queue execution to a non-blocking background process",
-            "keywords": [
-                "Craft",
-                "cms",
-                "craft-plugin",
-                "craftcms",
-                "queue"
-            ],
-            "support": {
-                "docs": "https://github.com/ostark/craft-async-queue/blob/master/README.md",
-                "issues": "https://github.com/ostark/craft-async-queue/issues",
-                "source": "https://github.com/ostark/craft-async-queue/tree/4.0.0"
-            },
-            "time": "2024-04-19T07:36:53+00:00"
         },
         {
             "name": "paragonie/constant_time_encoding",

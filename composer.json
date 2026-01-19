@@ -4,7 +4,6 @@
   "require": {
     "craftcms/ckeditor": "^4.11.0",
     "craftcms/cms": "^5.0.0",
-    "ostark/craft-async-queue": "^4.0.0",
     "vlucas/phpdotenv": "^5.4.0",
     "xpertbot/craft-wheelform": "^4.0.4"
   },

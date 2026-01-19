@@ -1,4 +1,4 @@
-dateModified: 1768834781
+dateModified: 1768838150
 email:
   fromEmail: info@tar-mac.be
   fromName: Tarmac
@@ -31,7 +31,7 @@ meta:
 plugins:
   async-queue:
     edition: standard
-    enabled: true
+    enabled: false
     schemaVersion: 1.0.0
   ckeditor:
     edition: standard
