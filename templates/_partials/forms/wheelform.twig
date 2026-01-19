@@ -1,0 +1,85 @@
+{# Gebruik: {% include '_partials/forms/wheelform' with { form: wheelform.form('Contact') } %} #}
+
+{% macro errorList(errors) %}
+    {% if errors %}
+        <ul class="mb-4 text-sm text-white font-extrabold">
+            {% for error in errors %}
+                <li><i>{{ error }}</i></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endmacro %}
+
+{% from _self import errorList %}
+
+
+    {{ form.open() }}
+
+        {# We voegen handmatig een div toe voor de spacing die we eerder via de array wilden doen #}
+        <div class="space-y-2">
+            {# {{ form.anchor }} #}
+
+        {% for field in form.fields %}
+            {% switch field.type %}
+                {% case "checkbox" %}
+                    <div class="form-checkbox">
+                    {% for item in field.items %}
+                    <label><input class="checkbox" type="checkbox" value="{{ item }}" {{values[field.name] is defined and item in values[field.name] ? ' checked="checked"' : '' }} name="{{field.name}}[]"/>{{item}}</label>
+                    {% endfor %}
+                    </div>
+                {% case "radio" %}
+                    <div class="form-radio">
+                    {% for item in field.items %}
+                    <input class="radio" type="radio" value="{{ item }}" {{values[field.name] is defined and item == values[field.name] ? ' checked="checked"' : '' }} name="{{field.name}}"/>
+                    <label>{{item}}</label>
+                    {% endfor %}
+                    </div>
+                {% case "select" %}
+                    <div class="form-select">
+                    {% if field.label %}
+                        <label class="pe-5">{{ field.label }}</label>
+                    {% endif %}
+                    <select id="wf-select" name="{{field.name}}" class="wf-field {{field.fieldClass}}">
+                    {% for item in field.items %}
+                        <option value="{{ item }}" {{values[field.name] is defined and item == values[field.name] ? 'selected="selected"' : '' }}>{{item}}</option>
+                    {% endfor %}
+                    </select>
+                    </div>
+                {% case "file" %}
+                    <div class="form-group">
+                        <label>{{field.label}}</label>
+                        <input type="file" name="{{field.name}}">
+                    </div>
+                {% case "textarea" %}
+                    <div class="form-group">
+                        <label>{{field.label}}</label>
+                        <textarea class="form-control" name="{{field.name}}">{{ values[field.name] ?? '' }}</textarea>
+                    </div>
+                {% case "list" %}
+                    <div class="form-group">
+                        <label>{{field.label}}</label>
+                        <input type="text" name="{{field.name}}[]">
+                        <script>//Javascript to handle adding fields</script>
+                    </div>
+                {% default %}
+                    <div class="form-group">
+                    <label>{{field.label}}</label>
+                    <input class="form-control" type="{{field.type}}" value="{{ values[field.name] ?? '' }}" name="{{field.name}}">
+                    </div>
+            {% endswitch %}
+            {{ wheelformErrors[field.name] is defined ? errorList(wheelformErrors[field.name]) }}
+        {% endfor %}
+
+        {% if form.recaptcha %}
+            {{ wheelform.recaptchaV3({'action': 'bestelformulier'}) }}
+        {# Mocht recaptcha V2 toch nodig zijn: #}
+            {# <div>
+                <script src="https://www.google.com/recaptcha/api.js"></script>
+                <!-- Production captcha -->
+                <div class="g-recaptcha" data-sitekey="{{wheelform.getSettings('recaptcha_public')}}"></div>
+            </div> #}
+        {% endif %}
+
+        <button class="btn btn-primary" id="submit">Bestel</button>
+    </div>
+    </form>

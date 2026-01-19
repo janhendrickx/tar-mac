@@ -1,0 +1,57 @@
+{# Haal het aantal tickets op #}
+{% set aantalTickets = fields.amount.value ?? 0 %}
+{% set naam = fields.name.value ?? 0 %}
+{% set prijsPerTicket = 12 %}
+{% set totaalPrijs = aantalTickets * prijsPerTicket %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+</head>
+<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+    <h2>Bedankt voor je reservatie!</h2>
+    
+    <p>Hallo {{ fields.name.value ?? 'daar' }},</p>
+    
+    <p>We hebben je reservering voor {{ aantalTickets }} op naam van {{ fields.name.value }} goed ontvangen.</p>
+    
+    <h3>Jouw bestelling:</h3>
+    <p style="margin-top: 20px;">
+        Je hebt {{ aantalTickets }} besteld op naam van {{ fields.name.value }}
+    </p>
+
+    <table style="border-collapse: collapse; width: 100%; max-width: 600px;">
+        <tr>
+            <td style="padding: 8px; border-bottom: 1px solid #ddd;"><strong>Aantal tickets</strong></td>
+            <td style="padding: 8px; border-bottom: 1px solid #ddd;">{{ aantalTickets }}</td>
+        </tr>
+        <tr>
+            <td style="padding: 8px; border-bottom: 1px solid #ddd;"><strong>Prijs per ticket:</strong></td>
+            <td style="padding: 8px; border-bottom: 1px solid #ddd;">€ {{ prijsPerTicket|number_format(2, ',', '.') }}</td>
+        </tr>
+        <tr>
+            <td style="padding: 8px; border-bottom: 2px solid #333; font-weight: bold;"><strong>Totaal:</strong></td>
+            <td style="padding: 8px; border-bottom: 2px solid #333; font-weight: bold;">€ {{ totaalPrijs|number_format(2, ',', '.') }}</td>
+        </tr>
+    </table>
+    
+    <h3>Jouw gegevens:</h3>
+    <table style="border-collapse: collapse; width: 100%; max-width: 600px;">
+        {% for field in fields %}
+            <tr>
+                <td style="padding: 8px; border-bottom: 1px solid #ddd;"><strong>{{ field.label }}:</strong></td>
+                <td style="padding: 8px; border-bottom: 1px solid #ddd;">{{ field.value }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    
+    <p style="margin-top: 20px;">Deze bestelling is definitief zodra je het bedrag van € {{ totaalPrijs|number_format(2, ',', '.') }} hebt gestort op rekening:
+    VZW TARMAC: IBAN: BE41 7512 0433 7210 met vermelding "{{ naam }} (dit zou je naam moeten zijn) + optreden-AFFAIRE"
+    </p>
+    
+    <p>Tot op 28 februari!<br>
+    Tarmac
+    </p>
+</body>
+</html>

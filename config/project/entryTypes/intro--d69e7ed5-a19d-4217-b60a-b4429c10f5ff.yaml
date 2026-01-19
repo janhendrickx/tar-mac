@@ -38,6 +38,23 @@ fieldLayouts:
             warning: null
             width: 100
           -
+            dateAdded: '2026-01-18T18:41:12+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 1ee0761f-66e1-4a6f-989c-9a99529fea4b # Hoofding
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 9ffdf8ef-1503-4e78-8609-bdaca0c3d426
+            userCondition: null
+            warning: null
+            width: 100
+          -
             dateAdded: '2026-01-15T15:57:32+00:00'
             editCondition: null
             elementCondition: null

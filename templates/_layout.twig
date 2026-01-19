@@ -1,17 +1,22 @@
+{% set cssFile = view.assetManager.getPublishedUrl('@webroot/assets/css/app.css') %}
+{% set bodyClass = bodyClass ?? null %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="assets/css/app.css">
-        <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
-        <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+        {# Gebruik 'v=' met de filemtime (timestamp van laatste wijziging) #}
+        <link rel="stylesheet" href="/assets/css/app.css?v={{ date().timestamp }}">
+		{# <link rel="stylesheet" href="assets/css/app.css"> #}
+        <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Press+Start+2P&display=swap" rel="stylesheet">
 		<title>{{ siteName }}</title>
 	</head>
-	<body>
+	<body class="{{ bodyClass }}">
 		{% block content %}{% endblock %}
 		{# {% include "_partials/_scripts.twig" %} #}
 	</body>

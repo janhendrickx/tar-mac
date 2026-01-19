@@ -1,12 +1,51 @@
 @import "tailwindcss";
+@source "../../templates/**/*.twig";
 
 @theme {
-  /* Je Bootstrap-achtige kleuren */
-  --color-primary: #fff;
-  --color-secondary: #000;
-  --color-success: #00f;
+    --color-primary: #e60e48;
+    --color-secondary: #000;
+    --color-success: #00f;
 
-  /* De Container configureren */
-  --container-center: true;
-  --container-padding: 1rem;
+    --container-center: true;
+    --container-padding: 1rem;
+
+    --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+    --font-heading: "Press Start 2P", system-ui;
+}
+
+/* Importeer je componenten HIER */
+@import "./components/style.css";
+@import "./components/forms.css";
+@import "./pages/tickets.css";
+
+/* Overschrijf de container in de base layer */
+@layer base {
+  .container {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    
+    /* Bootstrap Breakpoints & Max-widths nu ACTIEF */
+    @media (width >= 640px) {
+      max-width: 540px;
+    }
+
+    @media (width >= 768px) {
+      max-width: 720px;
+    }
+
+    @media (width >= 1024px) {
+      max-width: 960px;
+    }
+
+    @media (width >= 1280px) {
+      max-width: 1140px;
+    }
+
+    @media (width >= 1536px) {
+      max-width: 1320px;
+    }
+  }
 }

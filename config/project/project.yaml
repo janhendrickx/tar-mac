@@ -1,18 +1,15 @@
-dateModified: 1768674697
+dateModified: 1768761672
 email:
   fromEmail: info@tar-mac.be
   fromName: Tarmac
   replyToEmail: null
   template: null
   transportSettings:
-    host: $SMTP_HOST
-    password: $SMTP_PASSWORD
-    port: '587'
-    useAuthentication: '1'
-    username: $SMTP_USERNAME
-  transportType: craft\mail\transportadapters\Smtp
+    command: '/usr/local/bin/mailpit sendmail -t --smtp-addr 127.0.0.1:1025'
+  transportType: craft\mail\transportadapters\Sendmail
 meta:
   __names__:
+    1ee0761f-66e1-4a6f-989c-9a99529fea4b: Hoofding # Hoofding
     2a11be86-2613-4b12-9a8e-10dc9eca0936: Tickets # Tickets
     a3d62d30-84eb-428e-9608-f556fb668979: Tarmac # Tarmac
     a489d99e-553f-4af5-863d-0e65b8423a1a: Formulier # Formulier
@@ -36,9 +33,9 @@ plugins:
       from_email: tickets@tar-mac.be
       from_name: Tarmac
       recaptcha_min_score: '0.5'
-      recaptcha_public: 6Lf_xU0sAAAAAD53T5t2ql5ceZ1s83nNT3VG5Dj7
-      recaptcha_secret: 6Lf_xU0sAAAAALIM1badVvmVZFwJiYqFoS-IZlhx
-      recaptcha_version: '2'
+      recaptcha_public: 6LeybE4sAAAAADcKleKQ3ehjH2-LzBwzawfjBjYP
+      recaptcha_secret: 6LeybE4sAAAAAGdafB6-e0j1NLnV8MuqWSIR0zcr
+      recaptcha_version: '3'
       success_message: 'Bedankt voor je bestelling! In je mailbox vind je normaal alle verder info!'
       volume_id: ''
 system:

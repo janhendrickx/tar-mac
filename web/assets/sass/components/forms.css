@@ -1,0 +1,53 @@
+/* web/assets/sass/components/forms.css */
+
+.form-label {
+  @apply block text-sm font-medium mb-2 text-gray-900;
+}
+
+.form-control {
+  @apply block w-full rounded-md border-0 py-2 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm;
+}
+
+/* De 'readonly' of 'disabled' staat uit Bootstrap */
+.form-control:disabled {
+  @apply bg-gray-50 text-gray-500 ring-gray-200 cursor-not-allowed;
+}
+
+.form-check {
+  @apply flex items-center gap-x-3;
+}
+
+.form-check-input {
+  @apply h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary;
+}
+
+.form-check-label {
+  @apply text-sm font-medium text-gray-900;
+}
+
+.input-group {
+  @apply flex mt-2 shadow-sm rounded-md;
+}
+
+.input-group-text {
+  @apply inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm;
+}
+
+/* Zorg dat de input de juiste ronde hoeken krijgt binnen de groep */
+.input-group .form-control {
+  @apply rounded-none rounded-r-md;
+}
+
+.btn {
+  @apply inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-offset-2;
+}
+
+.btn-primary {
+  /* v4 syntax: kleur/percentage */
+  @apply bg-primary text-white hover:bg-primary/90 shadow-sm focus:ring-primary;
+}
+
+/* Extra spacing tussen velden */
+.field-container + .field-container {
+  @apply mt-4;
+}
