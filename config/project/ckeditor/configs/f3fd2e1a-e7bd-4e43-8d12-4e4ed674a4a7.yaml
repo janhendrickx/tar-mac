@@ -1,0 +1,37 @@
+headingLevels:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+name: Hoofding
+options:
+  heading:
+    options:
+      -
+        model: heading2
+        title: 'Kop 2'
+        view: h2
+      -
+        model: heading2black
+        title: 'Kop 2 (zwart)'
+        view:
+          classes: text-black
+          name: h2
+      -
+        model: heading3
+        title: 'Kop 3'
+        view: h3
+      -
+        model: heading3black
+        title: 'Kop 3 (zwart)'
+        view:
+          classes: text-black
+          name: h3
+toolbar:
+  - heading
+  - '|'
+  - bold
+  - italic
+  - link

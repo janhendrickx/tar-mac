@@ -4,7 +4,8 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    min-height: 100vh;
+    height: 100%;
     @screen(md) {
         /* background-image: url(../img/affaire_3.jpeg); */
         background-image: none;

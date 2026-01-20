@@ -1,12 +1,16 @@
-dateModified: 1768838150
+dateModified: 1768897896
 email:
   fromEmail: info@tar-mac.be
   fromName: Tarmac
   replyToEmail: null
   template: null
   transportSettings:
-    command: '/usr/local/bin/mailpit sendmail -t --smtp-addr 127.0.0.1:1025'
-  transportType: craft\mail\transportadapters\Sendmail
+    host: $SMTP_HOST
+    password: $SMTP_PASSWORD
+    port: $SMTP_PORT
+    useAuthentication: '1'
+    username: $SMTP_USERNAME
+  transportType: craft\mail\transportadapters\Smtp
 fs:
   images:
     hasUrls: true
@@ -15,6 +19,10 @@ fs:
       path: '@webroot/uploads/images'
     type: craft\fs\Local
     url: $PRIMARY_SITE_URL/uploads/images
+graphql:
+  publicToken:
+    enabled: false
+    expiryDate: null
 meta:
   __names__:
     1ee0761f-66e1-4a6f-989c-9a99529fea4b: Hoofding # Hoofding
@@ -28,6 +36,7 @@ meta:
     d69e7ed5-a19d-4217-b60a-b4429c10f5ff: Intro # Intro
     dde55f52-a313-4f67-ac94-159629bcc3c1: Tickets # Tickets
     f1e549a1-8d29-46e7-8a2b-61c927402b01: Afbeelding # Afbeelding
+    f3fd2e1a-e7bd-4e43-8d12-4e4ed674a4a7: Hoofding # Hoofding
 plugins:
   async-queue:
     edition: standard

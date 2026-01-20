@@ -29,8 +29,12 @@
 	<main class="min-h-screen flex items-center py-10">
         <div class="container mx-auto">
             <div class="bg-white/70 backdrop-blur-md border border-primary/20 rounded-3xl p-8 md:p-12 shadow-2xl">
-                <h1 class="text-center text-primary font-heading mb-6">{{ entry.header }}</h1>
-                <div class="mb-4">{{ entry.text }}</div>
+                <div class="text-center text-primary mb-6">
+                    {{ entry.header }}
+                </div>
+                <div class="mb-6 text-center m-auto md:max-w-2/3">
+                    {{ entry.text }}
+                </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
                     <div class="left-column m-auto">
                         <img src="{{ affiche.getUrl(afficheThumb) }}" alt="{{ affiche.title }}">

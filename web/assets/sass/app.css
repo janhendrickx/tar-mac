@@ -21,47 +21,57 @@
 
 /* Overschrijf de container in de base layer */
 @layer base {
-  .container {
-    width: 100%;
-    margin-right: auto;
-    margin-left: auto;
-    padding-right: 1rem;
-    padding-left: 1rem;
-    
-    /* Bootstrap Breakpoints & Max-widths nu ACTIEF */
-    @media (width >= 640px) {
-      max-width: 540px;
+    .container {
+        width: 100%;
+        margin-right: auto;
+        margin-left: auto;
+        padding-right: 1rem;
+        padding-left: 1rem;
+
+        /* Bootstrap Breakpoints & Max-widths nu ACTIEF */
+        @media (width >=640px) {
+            max-width: 540px;
+        }
+
+        @media (width >=768px) {
+            max-width: 720px;
+        }
+
+        @media (width >=1024px) {
+            max-width: 960px;
+        }
+
+        @media (width >=1280px) {
+            max-width: 1140px;
+        }
+
+        @media (width >=1536px) {
+            max-width: 1320px;
+        }
     }
 
-    @media (width >= 768px) {
-      max-width: 720px;
+    h1,
+    h2,
+    h3 {
+        @apply tracking-wide;
+        @apply text-primary;
     }
 
-    @media (width >= 1024px) {
-      max-width: 960px;
+    h1 {
+        @apply text-5xl;
     }
 
-    @media (width >= 1280px) {
-      max-width: 1140px;
+    h2 {
+        @apply text-3xl;
     }
 
-    @media (width >= 1536px) {
-      max-width: 1320px;
+    h3 {
+        @apply text-xl;
     }
-  }
 
-  h1,
-  h2 {
-    @apply tracking-wide;
-    @apply text-primary;
-  }  
-  
-  h1 {
-    @apply text-5xl;
-  }
-
-  h2 {
-    @apply text-3xl;
-  }
+    button,
+    .btn {
+        cursor: pointer;
+    }
 
 }
