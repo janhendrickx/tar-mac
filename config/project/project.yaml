@@ -1,4 +1,4 @@
-dateModified: 1768897896
+dateModified: 1768918722
 email:
   fromEmail: info@tar-mac.be
   fromName: Tarmac
@@ -32,11 +32,11 @@ meta:
     a489d99e-553f-4af5-863d-0e65b8423a1a: Formulier # Formulier
     a7024844-b4d2-4359-b6c4-9e96d1410f28: Tarmac # Tarmac
     ae5775c3-6e0d-472d-89bf-78a0cb6e87d5: Simple # Simple
+    ae56608e-8812-4aae-a6ec-dc095e8c9119: 'Tekst met headings in verschillende kleuren' # Tekst met headings in verschillende kleuren
     bf5b3ff2-3bf8-469a-abc8-9ed41965380e: Tekst # Tekst
     d69e7ed5-a19d-4217-b60a-b4429c10f5ff: Intro # Intro
     dde55f52-a313-4f67-ac94-159629bcc3c1: Tickets # Tickets
     f1e549a1-8d29-46e7-8a2b-61c927402b01: Afbeelding # Afbeelding
-    f3fd2e1a-e7bd-4e43-8d12-4e4ed674a4a7: Hoofding # Hoofding
 plugins:
   async-queue:
     edition: standard

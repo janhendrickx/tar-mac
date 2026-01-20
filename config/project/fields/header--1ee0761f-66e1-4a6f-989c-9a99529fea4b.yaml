@@ -7,7 +7,7 @@ settings:
   availableTransforms: ''
   availableVolumes: '*'
   characterLimit: null
-  ckeConfig: f3fd2e1a-e7bd-4e43-8d12-4e4ed674a4a7 # Hoofding
+  ckeConfig: ae56608e-8812-4aae-a6ec-dc095e8c9119 # Tekst met headings in verschillende kleuren
   createButtonLabel: null
   defaultTransform: null
   expandEntryButtons: false
