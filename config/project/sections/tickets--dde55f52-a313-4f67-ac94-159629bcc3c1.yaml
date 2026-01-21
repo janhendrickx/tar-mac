@@ -3,6 +3,8 @@ enableVersioning: true
 entryTypes:
   -
     uid: d69e7ed5-a19d-4217-b60a-b4429c10f5ff # Intro
+  -
+    uid: 3426a026-9598-4a86-97e4-117abdfb0cff
 handle: tickets
 maxAuthors: 1
 name: Tickets

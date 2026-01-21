@@ -1,4 +1,4 @@
-dateModified: 1768918722
+dateModified: 1768992372
 email:
   fromEmail: info@tar-mac.be
   fromName: Tarmac
@@ -27,7 +27,10 @@ meta:
   __names__:
     1ee0761f-66e1-4a6f-989c-9a99529fea4b: Hoofding # Hoofding
     2a11be86-2613-4b12-9a8e-10dc9eca0936: Tickets # Tickets
+    8d558c98-7420-4186-9237-8c5cc44338ed: 'SEO Titel' # SEO Titel
     45b6867a-8b2b-4aa8-9497-0718c5eb402f: Afbeeldingen # Afbeeldingen
+    049a65c5-ed8f-460a-ab76-c2d57b299432: 'SEO Afbeelding' # SEO Afbeelding
+    950b66a8-04f4-4ba8-94fc-ae8fffca3308: 'SEO beschrijving' # SEO beschrijving
     a3d62d30-84eb-428e-9608-f556fb668979: Tarmac # Tarmac
     a489d99e-553f-4af5-863d-0e65b8423a1a: Formulier # Formulier
     a7024844-b4d2-4359-b6c4-9e96d1410f28: Tarmac # Tarmac
@@ -46,6 +49,10 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 3.0.0.0
+  seomate:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
   wheelform:
     edition: standard
     enabled: true

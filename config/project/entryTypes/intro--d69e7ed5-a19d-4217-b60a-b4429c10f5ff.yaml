@@ -125,6 +125,63 @@ fieldLayouts:
         name: Inhoud
         uid: b3686f46-5b53-42e6-8d8c-34f8800f8e0d
         userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2026-01-21T10:46:12+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 8d558c98-7420-4186-9237-8c5cc44338ed # SEO Titel
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 85204178-fe74-49b6-817c-75286133f9d8
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-01-21T10:46:12+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 950b66a8-04f4-4ba8-94fc-ae8fffca3308 # SEO beschrijving
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ff4f8f4b-6a0e-45b2-b5aa-b66d9e9a4777
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-01-21T10:46:12+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 049a65c5-ed8f-460a-ab76-c2d57b299432 # SEO Afbeelding
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 8262dbfb-b991-4e98-89a1-67552a010024
+            userCondition: null
+            warning: null
+            width: 100
+        name: SEO
+        uid: e070e8a0-d3ea-4ab8-9a87-3b8408bda5c4
+        userCondition: null
 handle: intro
 hasTitleField: true
 icon: null

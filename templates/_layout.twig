@@ -1,22 +1,20 @@
-{% set cssFile = view.assetManager.getPublishedUrl('@webroot/assets/css/app.css') %}
+{% set cssPath = '/assets/css/app.css' %}
 {% set bodyClass = bodyClass ?? null %}
 
 <!DOCTYPE html>
 <html lang="nl">
 	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-        {# Gebruik 'v=' met de filemtime (timestamp van laatste wijziging) #}
-        <link rel="stylesheet" href="/assets/css/app.css?v={{ date().timestamp }}">
-		{# <link rel="stylesheet" href="assets/css/app.css"> #}
-        <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
-        <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% hook 'seomateMeta' %}
+        {# Gebruik 'v=' met de filemtime (timestamp van laatste wijziging), deze wordt enkel toegepast al het css bestand wordt opgeslaan #}
+        <link rel="stylesheet" href="{{ cssPath }}?v={{ now|date('U') }}">
+        <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        {# <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Vina+Sans&display=swap" rel="stylesheet"> #}
-        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Vina+Sans&display=swap" rel="stylesheet">
-		<title>{{ siteName }}</title>
-	</head>
+        <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Vina+Sans&display=swap" rel="stylesheet">
+    </head>
     <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-W715MQCED0"></script>
             <script>
