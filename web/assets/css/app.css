@@ -752,6 +752,36 @@ label.required::after {
 .field-container + .field-container {
   margin-top: calc(var(--spacing) * 4);
 }
+#reserveer:disabled {
+  cursor: not-allowed;
+}
+.form-feedback-msg {
+  font-size: var(--text-sm);
+  line-height: var(--tw-leading, var(--text-sm--line-height));
+  font-style: italic;
+  margin-top: .5rem;
+  color: var(--color-primary);
+  display: block;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 0.8s linear infinite;
+  margin-right: 10px;
+  vertical-align: middle;
+}
 .tickets {
   color: var(--color-black);
   background-image: url(../img/affaire_3.jpeg);
@@ -1008,6 +1038,11 @@ label.required::after {
 @property --tw-backdrop-sepia {
   syntax: "*";
   inherits: false;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {

@@ -73,3 +73,36 @@ label.required::after {
 .field-container + .field-container {
   @apply mt-4;
 }
+
+
+/* Styling for the "processing" element */
+#reserveer:disabled {
+    /* opacity: 0.75; */
+    cursor: not-allowed;
+}
+
+.form-feedback-msg {
+    @apply text-sm;
+    @apply italic;
+    margin-top: .5rem;
+    color: var(--color-primary);
+    display: block;
+}
+
+   /* De spinner animatie */
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    .spinner {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        border: 2px solid rgba(255,255,255,0.3);
+        border-radius: 50%;
+        border-top-color: #fff;
+        animation: spin 0.8s linear infinite;
+        margin-right: 10px;
+        vertical-align: middle;
+    }

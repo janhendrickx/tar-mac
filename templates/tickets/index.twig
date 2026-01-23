@@ -65,3 +65,33 @@
 	</main>
 
 {% endblock %}
+{% js %}
+    document.addEventListener('DOMContentLoaded', function() {
+        const reserveerKnop = document.getElementById('reserveer');
+        
+        if (reserveerKnop) {
+            const formulier = reserveerKnop.closest('form');
+            
+            if (formulier) {
+                formulier.addEventListener('submit', function(e) {
+                    {# Voeg deze regel toe om het formulier niet telkens te verzenden (voor development dus) #}
+                    {# e.preventDefault();  #}
+                    setTimeout(function() {
+                       {# Deactiveer de knop #}
+                        reserveerKnop.disabled = true;
+                        {# Voeg de spinner en tekst toe #}
+                        reserveerKnop.innerHTML = '<span class="spinner"></span> Even geduld...';
+
+                        {# Extra bericht onder de knop #}
+                        if (!document.querySelector('.form-feedback-msg')) {
+                            const loaderMsg = document.createElement('span');
+                            loaderMsg.className = 'form-feedback-msg';
+                            loaderMsg.innerText = 'Je reservering wordt verwerkt.';
+                            formulier.appendChild(loaderMsg);
+                        }
+                    }, 0);
+                });
+            }
+        }
+    });
+{% endjs %}
