@@ -22,7 +22,7 @@ class Module extends BaseModule
                     $userEmail = $_POST['email'] ?? '';
                     
                     if (array_key_exists($userEmail, $to)) {
-                        // Haal gegevens op
+                        // Dit is de USER email - Reply-To moet naar admin
                         $voornaam = $_POST['first_name'] ?? '';
                         $achternaam = $_POST['last_name'] ?? '';
                         $amount = $_POST['amount'] ?? '';
@@ -30,11 +30,11 @@ class Module extends BaseModule
                         
                         // Pas subject aan
                         $ticketWoord = ($amount > 1) ? 'tickets' : 'ticket';
-                        $newSubject = "Bestelling van {$amount} {$ticketWoord} voor Affaire + The Broken o.n.v. {$volledigeNaam}";
+                        $newSubject = "Bestelling van {$amount} {$ticketWoord} voor Affaire 28/02 o.n.v. {$volledigeNaam}";
                         $event->message->setSubject($newSubject);
                         
-                        // Stel Reply-To in op het emailadres van de gebruiker
-                        $event->message->setReplyTo([$userEmail => $volledigeNaam]);
+                        // Reply-To naar admin email (pas dit aan naar jouw admin email!)
+                        $event->message->setReplyTo(['tickets@tar-mac.be' => 'Tarmac']);
                         
                         // Verstuur naar Google Sheets
                         $this->sendToGoogleSheetsFast();
@@ -58,14 +58,11 @@ class Module extends BaseModule
         $webhookUrl = 'https://script.google.com/macros/s/AKfycbywjK_VHOcp09tQPiAF2rt0kv5sNL7OcI0Eovjb-XDyCuGvze90RHvT5bVWnngg7akf/exec';
         $client = Craft::createGuzzleClient();
         try {
-            // postAsync stuurt de data direct weg
             $promise = $client->postAsync($webhookUrl, [
                 'json' => $data,
                 'timeout' => 2,
                 'connect_timeout' => 2,
             ]);
-            // De 'false' hier is cruciaal: het zegt "ga door met het script, 
-            // wacht niet op de volledige afhandeling van het HTTP verzoek"
             $promise->wait(false);
             
             Craft::info('Google Sheets request afgevuurd.', __METHOD__);
