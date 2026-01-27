@@ -31,7 +31,7 @@ class Module extends BaseModule
                         $this->sendToGoogleSheetsFast();
                     } else {
                         $ticketWoord = ($amount > 1) ? 'tickets' : 'ticket';
-                        $adminSubject = "Bestelling van {$amount} {$ticketWoord} voor Affaire op 28/02 o.n.v. {$volledigeNaam}";
+                        $adminSubject = "Bestelling van {$amount} {$ticketWoord} voor Affaire + The Broken op 28/02 o.n.v. {$volledigeNaam}";
                         $event->message->setSubject($adminSubject);
                         // ADMIN EMAIL: Pas Reply-To aan naar de gebruiker
                         $event->message->setReplyTo([$userEmail => $volledigeNaam]);
