@@ -20,24 +20,17 @@ class Module extends BaseModule
                 if (isset($_POST['form_id'])) {
                     $to = $event->message->getTo();
                     $userEmail = $_POST['email'] ?? '';
+                    $voornaam = $_POST['first_name'] ?? '';
+                    $achternaam = $_POST['last_name'] ?? '';
+                    $volledigeNaam = trim($voornaam . ' ' . $achternaam);
                     
+                    // Check of dit de USER email is (voor Google Sheets)
                     if (array_key_exists($userEmail, $to)) {
-                        // Dit is de USER email - Reply-To moet naar admin
-                        $voornaam = $_POST['first_name'] ?? '';
-                        $achternaam = $_POST['last_name'] ?? '';
-                        $amount = $_POST['amount'] ?? '';
-                        $volledigeNaam = trim($voornaam . ' ' . $achternaam);
-                        
-                        // Pas subject aan
-                        $ticketWoord = ($amount > 1) ? 'tickets' : 'ticket';
-                        $newSubject = "Bestelling van {$amount} {$ticketWoord} voor Affaire 28/02 o.n.v. {$volledigeNaam}";
-                        $event->message->setSubject($newSubject);
-                        
-                        // Reply-To naar admin email (pas dit aan naar jouw admin email!)
-                        $event->message->setReplyTo(['tickets@tar-mac.be' => 'Tarmac']);
-                        
                         // Verstuur naar Google Sheets
                         $this->sendToGoogleSheetsFast();
+                    } else {
+                        // ADMIN EMAIL: Pas Reply-To aan naar de gebruiker
+                        $event->message->setReplyTo([$userEmail => $volledigeNaam]);
                     }
                 }
             }
