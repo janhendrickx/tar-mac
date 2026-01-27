@@ -22,6 +22,7 @@ class Module extends BaseModule
                     $userEmail = $_POST['email'] ?? '';
                     $voornaam = $_POST['first_name'] ?? '';
                     $achternaam = $_POST['last_name'] ?? '';
+                    $amount = $_POST['amount'] ?? '';
                     $volledigeNaam = trim($voornaam . ' ' . $achternaam);
                     
                     // Check of dit de USER email is (voor Google Sheets)
@@ -29,6 +30,9 @@ class Module extends BaseModule
                         // Verstuur naar Google Sheets
                         $this->sendToGoogleSheetsFast();
                     } else {
+                        $ticketWoord = ($amount > 1) ? 'tickets' : 'ticket';
+                        $adminSubject = "Bestelling van {$amount} {$ticketWoord} voor Affaire op 28/02 o.n.v. {$volledigeNaam}";
+                        $event->message->setSubject($adminSubject);
                         // ADMIN EMAIL: Pas Reply-To aan naar de gebruiker
                         $event->message->setReplyTo([$userEmail => $volledigeNaam]);
                     }
