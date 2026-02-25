@@ -4,9 +4,10 @@
 {% set formId = entry.form.id ?? null %}
 {% set reserveerForm = reserveerForm ?? null %}
 {% set affiche = entry.image.one() ?? null %}
-{% set endDate = entry.endDate|date('Y-m-d') ? null %}
-{% set endTime = entry.endTime|date('H:i') ? null %}
-{% set endTicketSale = endDate ~ ' ' ~ endTime ? null %}
+{% set endDate = entry.endDate|date('Y-m-d') %}
+{% set endTime = entry.endTime|date('H:i') %}
+{# {% set endTicketSale = endDate ~ ' ' ~ endTime %} #}
+{% set endTicketSale = (entry.endDate|date('Y-m-d')) ~ ' ' ~ (entry.endTime|date('H:i')) %}
 
 {% set afficheThumb = {
     mode: 'fit',
@@ -58,7 +59,6 @@
                                     </div>
                             {% endif %}
                         {% else %}
-                            
                             {% if date(endTicketSale) > date() %}
                                 <div class="pb-4">
                                     {{ entry.formText}}
