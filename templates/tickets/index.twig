@@ -1,8 +1,12 @@
 {% extends "_layout.twig" %}
 
 {% set bodyClass = 'tickets' %}
-{% set formId = entry.form.id %}
-{% set affiche = entry.image.one() %}
+{% set formId = entry.form.id ?? null %}
+{% set reserveerForm = reserveerForm ?? null %}
+{% set affiche = entry.image.one() ?? null %}
+{% set endDate = entry.endDate|date('Y-m-d') ? null %}
+{% set endTime = entry.endTime|date('H:i') ? null %}
+{% set endTicketSale = endDate ~ ' ' ~ endTime ? null %}
 
 {% set afficheThumb = {
     mode: 'fit',
@@ -11,18 +15,19 @@
     quality: 100
 } %}
 
-{% set reserveerForm = wheelform.form({
-    id: formId,
-    submitButton: {
-    "type": "button",
-    "label": "Reserveer",
-    "attributes": { 
-        "class": "btn btn-primary mt-6",
-        "id": "reserveer",
-    },
-    
-}
-}) %}
+{% if formId %}
+    {% set reserveerForm = wheelform.form({
+        id: formId,
+        submitButton: {
+        "type": "button",
+        "label": "Reserveer",
+        "attributes": { 
+            "class": "btn btn-primary mt-6",
+            "id": "reserveer",
+        },
+        }
+    }) ?? null %}
+{% endif %}
 {% set submission = wheelform.lastSubmission ?? null %}
 
 {% block content %}
@@ -53,10 +58,19 @@
                                     </div>
                             {% endif %}
                         {% else %}
-                            <div class="pb-4">
-                                {{ entry.formText}}
-                            </div>
-                            {% include '_partials/forms/wheelform' with { form: reserveerForm } %}
+                            
+                            {% if date(endTicketSale) > date() %}
+                                <div class="pb-4">
+                                    {{ entry.formText}}
+                                </div>
+                                {% if reserveerForm %}
+                                    {% include '_partials/forms/wheelform' with { form: reserveerForm } %}
+                                {% endif %}
+                            {% else %}
+                                <div class="pb-4">
+                                    {{ entry.formTextEnd }}
+                                </div>
+                            {% endif %}
                         {% endif %}
                     </div>
                 </div>
