@@ -9,4 +9,7 @@
  * @link https://craftcms.com/docs/5.x/system/routing.html
  */
 
-return [];
+return [
+    // Stuurt alles door, behalve paden die beginnen met 'admin'
+    '^(?!admin).*$' => ['redirect' => 'https://www.facebook.com/tarmacmeerhout', 'status' => 301],
+];
