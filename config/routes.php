@@ -1,15 +1,18 @@
 <?php
-/**
- * Site URL Rules
- *
- * You can define custom site URL rules here, which Craft will check in addition
- * to routes defined in Settings → Routes.
- *
- * Read about Craft’s routing behavior (and this file’s structure), here:
- * @link https://craftcms.com/docs/5.x/system/routing.html
- */
+
+use craft\helpers\UrlHelper;
+
+// Haal het huidige pad op (bijv. 'contact' of 'admin/entries')
+$currentPath = Craft::$app->getRequest()->getPathInfo();
+// Haal de 'cpTrigger' op uit de config (standaard 'admin')
+$cpTrigger = Craft::$app->getConfig()->getGeneral()->cpTrigger;
+
+// Controleer of we NIET in het admin-paneel zitten en het geen console verzoek is
+if (!str_starts_with($currentPath, $cpTrigger) && !Craft::$app->getRequest()->getIsConsoleRequest()) {
+    Craft::$app->getResponse()->redirect('https://www.facebook.com/tarmacmeerhout', 301)->send();
+    exit();
+}
 
 return [
-    // Stuurt alles door, behalve paden die beginnen met 'admin'
-    '^(?!admin).*$' => ['redirect' => 'https://www.facebook.com/tarmacmeerhout', 'status' => 301],
+    // Je kunt dit leeg laten als alles naar Facebook gaat
 ];
