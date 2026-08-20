@@ -7,11 +7,48 @@ settings:
   availableTransforms: ''
   availableVolumes: '*'
   characterLimit: null
-  ckeConfig: ae56608e-8812-4aae-a6ec-dc095e8c9119 # Tekst met headings in verschillende kleuren
-  createButtonLabel: null
+  css: null
+  cssFile: null
   defaultTransform: null
-  expandEntryButtons: false
   fullGraphqlData: true
+  headingLevels:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+  js: null
+  jsFile: null
+  options:
+    heading:
+      options:
+        -
+          model: heading1black
+          title: 'Kop 1 (zwart)'
+          view:
+            classes: 'text-black text-5xl'
+            name: h2
+        -
+          model: heading2
+          title: 'Kop 2'
+          view: h2
+        -
+          model: heading2black
+          title: 'Kop 2 (zwart)'
+          view:
+            classes: 'text-black text-5xl'
+            name: h2
+        -
+          model: heading3
+          title: 'Kop 3'
+          view: h3
+        -
+          model: heading3black
+          title: 'Kop 3 (zwart)'
+          view:
+            classes: text-black
+            name: h3
   parseEmbeds: false
   purifierConfig: null
   purifyHtml: true
@@ -20,6 +57,12 @@ settings:
   showWordCount: false
   sourceEditingGroups:
     - __ADMINS__
+  toolbar:
+    - heading
+    - '|'
+    - bold
+    - italic
+    - link
   wordLimit: null
 translationKeyFormat: null
 translationMethod: none

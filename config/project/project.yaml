@@ -1,4 +1,4 @@
-dateModified: 1768992372
+dateModified: 1787233550
 email:
   fromEmail: info@tar-mac.be
   fromName: Tarmac
@@ -19,23 +19,19 @@ fs:
       path: '@webroot/uploads/images'
     type: craft\fs\Local
     url: $PRIMARY_SITE_URL/uploads/images
-graphql:
-  publicToken:
-    enabled: false
-    expiryDate: null
 meta:
   __names__:
     1ee0761f-66e1-4a6f-989c-9a99529fea4b: Hoofding # Hoofding
     2a11be86-2613-4b12-9a8e-10dc9eca0936: Tickets # Tickets
     8d558c98-7420-4186-9237-8c5cc44338ed: 'SEO Titel' # SEO Titel
+    32d29400-2b6b-4315-b39d-f1943a6d8cdc: Einduur # Einduur
     45b6867a-8b2b-4aa8-9497-0718c5eb402f: Afbeeldingen # Afbeeldingen
     049a65c5-ed8f-460a-ab76-c2d57b299432: 'SEO Afbeelding' # SEO Afbeelding
     950b66a8-04f4-4ba8-94fc-ae8fffca3308: 'SEO beschrijving' # SEO beschrijving
     a3d62d30-84eb-428e-9608-f556fb668979: Tarmac # Tarmac
     a489d99e-553f-4af5-863d-0e65b8423a1a: Formulier # Formulier
     a7024844-b4d2-4359-b6c4-9e96d1410f28: Tarmac # Tarmac
-    ae5775c3-6e0d-472d-89bf-78a0cb6e87d5: Simple # Simple
-    ae56608e-8812-4aae-a6ec-dc095e8c9119: 'Tekst met headings in verschillende kleuren' # Tekst met headings in verschillende kleuren
+    b7319cb1-9102-42ef-b0c7-c76d4548c184: Einddatum # Einddatum
     bf5b3ff2-3bf8-469a-abc8-9ed41965380e: Tekst # Tekst
     d69e7ed5-a19d-4217-b60a-b4429c10f5ff: Intro # Intro
     dde55f52-a313-4f67-ac94-159629bcc3c1: Tickets # Tickets
@@ -48,7 +44,7 @@ plugins:
   ckeditor:
     edition: standard
     enabled: true
-    schemaVersion: 3.0.0.0
+    schemaVersion: 5.6.0.0
   seomate:
     edition: standard
     enabled: true
@@ -70,10 +66,10 @@ plugins:
       volume_id: ''
 system:
   edition: solo
-  live: true
+  live: false
   name: Tarmac
   retryDuration: null
-  schemaVersion: 5.8.0.3
+  schemaVersion: 5.10.0.0
   timeZone: Europe/Brussels
 users:
   allowPublicRegistration: false

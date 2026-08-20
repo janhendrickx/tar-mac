@@ -2,9 +2,9 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {
-    "craftcms/ckeditor": "^4.11.0",
-    "craftcms/cms": "^5.0.0",
-    "vaersaagod/seomate": "^3.2.0",
+    "craftcms/ckeditor": "^5.7.0",
+    "craftcms/cms": "5.10.14",
+    "vaersaagod/seomate": "3.3.1",
     "vlucas/phpdotenv": "^5.4.0",
     "xpertbot/craft-wheelform": "^4.0.4"
   },
@@ -12,7 +12,7 @@
     "craftcms/generator": "^2.0.0",
     "yiisoft/yii2-shell": "^2.0.3"
   },
-   "autoload": {
+  "autoload": {
     "psr-4": {
       "modules\\": "modules/"
     }
@@ -29,5 +29,12 @@
     "post-root-package-install": [
       "@php -r \"file_exists('.env') || copy('.env.example.dev', '.env');\""
     ]
-  }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://composer.craftcms.com",
+      "canonical": false
+    }
+  ]
 }
