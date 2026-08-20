@@ -1,6 +1,11 @@
+.DS_Store
 /.ddev
 /.env
 /.idea
+./vscode
 /vendor
 /node_modules
-.DS_Store
+public_html
+/logs/
+/stats/
+
