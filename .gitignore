@@ -2,7 +2,7 @@
 /.ddev
 /.env
 /.idea
-./vscode
+.vscode
 /vendor
 /node_modules
 public_html
