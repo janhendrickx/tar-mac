@@ -3,7 +3,7 @@
 @layer theme, base, components, utilities;
 @layer theme {
   :root, :host {
-    --font-sans: "Merriweather", serif;
+    --font-sans: "Montserrat", sans-serif;
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
     --color-blue-600: oklch(54.6% 0.245 262.881);
@@ -44,9 +44,10 @@
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
-    --color-primary: #e60e48;
+    --color-primary: #d2242a;
+    --color-secondary: #57c5ee;
     --color-error: var(--color-primary);
-    --font-heading: "Vina Sans", sans-serif;
+    --font-heading: "Nunito Sans", sans-serif;
   }
 }
 @layer base {
@@ -372,13 +373,19 @@
     border-color: var(--color-gray-200);
   }
   .border-primary\/20 {
-    border-color: color-mix(in srgb, #e60e48 20%, transparent);
+    border-color: color-mix(in srgb, #d2242a 20%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
       border-color: color-mix(in oklab, var(--color-primary) 20%, transparent);
     }
   }
   .bg-\[\#e6e6e6cf\] {
     background-color: #e6e6e6cf;
+  }
+  .bg-black\/80 {
+    background-color: color-mix(in srgb, #000 80%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-black) 80%, transparent);
+    }
   }
   .bg-slate-100 {
     background-color: var(--color-slate-100);
@@ -388,12 +395,6 @@
   }
   .bg-white {
     background-color: var(--color-white);
-  }
-  .bg-white\/70 {
-    background-color: color-mix(in srgb, #fff 70%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      background-color: color-mix(in oklab, var(--color-white) 70%, transparent);
-    }
   }
   .p-0 {
     padding: calc(var(--spacing) * 0);
@@ -476,9 +477,6 @@
   }
   .text-error {
     color: var(--color-error);
-  }
-  .text-primary {
-    color: var(--color-primary);
   }
   .text-slate-600 {
     color: var(--color-slate-600);
@@ -609,7 +607,7 @@ label.required::after {
   border-width: 0px;
   padding-inline: calc(var(--spacing) * 3);
   padding-block: calc(var(--spacing) * 2);
-  color: var(--color-gray-900);
+  color: var(--color-white);
   --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
   --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
   box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
@@ -623,7 +621,7 @@ label.required::after {
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
   &:focus {
-    --tw-ring-color: var(--color-primary);
+    --tw-ring-color: var(--color-secondary);
   }
   &:focus {
     --tw-ring-inset: inset;
@@ -633,7 +631,7 @@ label.required::after {
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
   &:focus-visible {
-    --tw-ring-color: var(--color-primary);
+    --tw-ring-color: var(--color-secondary);
   }
   &:focus-visible {
     --tw-outline-style: none;
@@ -739,7 +737,7 @@ label.required::after {
   box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   &:hover {
     @media (hover: hover) {
-      background-color: color-mix(in srgb, #e60e48 90%, transparent);
+      background-color: color-mix(in srgb, #d2242a 90%, transparent);
       @supports (color: color-mix(in lab, red, red)) {
         background-color: color-mix(in oklab, var(--color-primary) 90%, transparent);
       }
@@ -747,6 +745,23 @@ label.required::after {
   }
   &:focus {
     --tw-ring-color: var(--color-primary);
+  }
+}
+.btn-secondary {
+  background-color: var(--color-secondary);
+  color: var(--color-black);
+  --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+  box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  &:hover {
+    @media (hover: hover) {
+      background-color: color-mix(in srgb, #57c5ee 90%, transparent);
+      @supports (color: color-mix(in lab, red, red)) {
+        background-color: color-mix(in oklab, var(--color-secondary) 90%, transparent);
+      }
+    }
+  }
+  &:focus {
+    --tw-ring-color: var(--color-secondary);
   }
 }
 .field-container + .field-container {
@@ -783,11 +798,11 @@ label.required::after {
   vertical-align: middle;
 }
 .tickets {
-  color: var(--color-black);
-  background-image: url(../img/affaire_3.jpeg);
+  color: var(--color-white);
+  background-image: url(../img/bg_tickets.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  background-position: top center;
   min-height: 100vh;
   height: 100%;
   @screen (md) {
@@ -820,7 +835,7 @@ label.required::after {
   h1, h2, h3 {
     --tw-tracking: var(--tracking-wide);
     letter-spacing: var(--tracking-wide);
-    color: var(--color-primary);
+    color: var(--color-secondary);
   }
   h1 {
     font-size: var(--text-5xl);

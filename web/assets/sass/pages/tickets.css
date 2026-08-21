@@ -1,9 +1,9 @@
 .tickets {
-    @apply text-black;
-    background-image: url(../img/affaire_3.jpeg);
+    @apply text-white;
+    background-image: url(../img/bg_tickets.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
+    background-position: top center;
     min-height: 100vh;
     height: 100%;
     @screen(md) {

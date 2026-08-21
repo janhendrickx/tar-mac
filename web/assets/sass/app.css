@@ -2,16 +2,16 @@
 @source "../../templates/**/*.twig";
 
 @theme {
-    --color-primary: #e60e48;
-    --color-secondary: #000;
+    --color-primary: #d2242a;
+    --color-secondary: #57c5ee;
     --color-success: #00f;
     --color-error: var(--color-primary);
 
     --container-center: true;
     --container-padding: 1rem;
 
-    --font-sans: "Merriweather", serif;
-    --font-heading: "Vina Sans", sans-serif;
+    --font-sans: "Montserrat", sans-serif;
+    --font-heading: "Nunito Sans", sans-serif;
 }
 
 /* Importeer je componenten HIER */
@@ -54,7 +54,7 @@
     h2,
     h3 {
         @apply tracking-wide;
-        @apply text-primary;
+        @apply text-secondary;
     }
 
     h1 {

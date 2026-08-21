@@ -12,11 +12,11 @@ label.required::after {
 
 .form-control, 
 .wf-field {
-  @apply block w-full rounded-md border-0 py-2 px-3 text-gray-900 shadow-sm ring-1 ring-inset sm:text-sm;
+  @apply block w-full rounded-md border-0 py-2 px-3 text-white shadow-sm ring-1 ring-inset sm:text-sm;
   /* Jouw specifieke focus styling */
-  @apply focus:ring-2 focus:ring-inset focus:ring-primary;
+  @apply focus:ring-2 focus:ring-inset focus:ring-secondary;
   /* Verwijder de blauwe browser-focus */
-  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary;
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary;
   
   background-color: rgba(255, 255, 255, 0.2);
 }
@@ -67,6 +67,11 @@ label.required::after {
 .btn-primary {
   /* v4 syntax: kleur/percentage */
   @apply bg-primary text-white hover:bg-primary/90 shadow-sm focus:ring-primary;
+}
+
+.btn-secondary {
+  /* v4 syntax: kleur/percentage */
+  @apply bg-secondary text-black hover:bg-secondary/90 shadow-sm focus:ring-secondary;
 }
 
 /* Extra spacing tussen velden */
