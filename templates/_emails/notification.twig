@@ -1,3 +1,8 @@
+{# Variabelen die per event moeten aangepast worden #}
+{% set date = '3 oktober' %}
+{% set vermelding = 'The Flexistantialists' %}
+{% set prijsPerTicket = 12 %}
+
 {# Haal het aantal tickets op #}
 {% set aantalTickets = fields.amount.value ?? 0 %}
 {% set voornaam = fields.first_name.value ?? 0 %}
@@ -5,7 +10,6 @@
 {% set naam = voornaam ~ ' ' ~ achternaam ?? 0 %}
 
 {% set email = fields.email.value ?? 0 %}
-{% set prijsPerTicket = 12 %}
 {% set totaalPrijs = aantalTickets * prijsPerTicket %}
 
 <!DOCTYPE html>
@@ -25,9 +29,9 @@
         <strong>Naam:</strong> VZW TARMAC<br>
         <strong>IBAN:</strong> BE41 7512 0433 7210 <br>
         <strong>Bedrag: </strong>€ {{ totaalPrijs|number_format(2, ',', '.') }} <br>
-        <strong>Vermelding</strong> <small>(naam + optreden AFFAIRE)</small><strong>:</strong> "{{ naam }} + optreden AFFAIRE"
+        <strong>Vermelding</strong> <small>(naam + optreden {{ vermelding }})</small><strong>:</strong> "{{ naam }} + optreden {{ vermelding }}"
     </p>
-    <p style="margin-top: 20px;">Tot op 28 februari!<br>
+    <p style="margin-top: 20px;">Tot op {{ date }}!<br>
         Tarmac
     </p>
 </body>

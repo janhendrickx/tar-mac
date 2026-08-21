@@ -4,7 +4,7 @@ docker opstarten (ik gebruik de desktop versie, die app openen is genoeg)
 `ddev start`
 
 Live databank binnen halen en lokaal overschrijven
-ddev import-db --file=/Users/janhendrickx/projecten/_databases/xc113002_tarmac.sql
+`ddev import-db --file=/Users/janhendrickx/projecten/_databases/xc113002_tarmac.sql`
 
 
 Connectie maken met ssh gaat als volgt:

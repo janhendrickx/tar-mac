@@ -1,4 +1,4 @@
-dateModified: 1787233550
+dateModified: 1787235908
 email:
   fromEmail: info@tar-mac.be
   fromName: Tarmac
@@ -66,7 +66,7 @@ plugins:
       volume_id: ''
 system:
   edition: solo
-  live: false
+  live: true
   name: Tarmac
   retryDuration: null
   schemaVersion: 5.10.0.0

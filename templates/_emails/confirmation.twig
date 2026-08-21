@@ -1,7 +1,9 @@
+{# Variabelen die per event moeten aangepast worden #}
+{% set prijsPerTicket = 12 %}
+
 {# Haal het aantal tickets op #}
 {% set aantalTickets = fields.amount.value ?? 0 %}
 {% set naam = fields.name.value ?? 0 %}
-{% set prijsPerTicket = 12 %}
 {% set totaalPrijs = aantalTickets * prijsPerTicket %}
 
 <!DOCTYPE html>
