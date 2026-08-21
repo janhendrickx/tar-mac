@@ -49,12 +49,20 @@
                         {% if craft.app.session.hasFlash('wheelformSuccess') %}  
                             {% if submission %}
                                 {% set firstName = submission.fields.first_name.value ?? 0 %}
+                                {% set lastName = submission.fields.last_name.value ?? 0 %}
                                 {% set email = submission.fields.email.value ?? 0 %}
                                     <div>
-                                        <h2 class="mb-4">Bedankt voor je bestelling</h2>
+                                        <h2 class="mb-4">Je bestelling is binnen</h2>
                                         <p class="mb-4">Hey  {{ firstName }}, </p>
-                                        <p> Je bestelling is goed doorgekomen. <br>
-                                            We hebben een e-mail gestuurd naar <u>{{ email }}</u> met alle gegevens om je reservering definitief te maken.
+                                        <p> Je bestelling is goed aangekomen. <br>
+                                            We hebben net een e-mail gestuurd naar <u>{{ email }}</u> met alle info om je reservatie af te ronden.
+                                        </p>
+                                        <p class="mb-4"> 
+                                            Niets ontvangen? Mail ons gerust op
+                                            <a class="text-secondary hover:text-white transition duration-300 ease-in-out" href="mailto:tickets@tar-mac.be?subject={{ ('Geen mail ontvangen op ' ~ email ~ ' – reservering van ' ~ firstName ~ ' ' ~ lastName)|url_encode }}">
+                                                tickets@tar-mac.be
+                                            </a>
+                                            dan sturen we je alles opnieuw.
                                         </p>
                                     </div>
                             {% endif %}
