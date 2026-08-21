@@ -42,10 +42,10 @@
                     {{ entry.text }}
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-                    <div class="left-column m-auto">
+                    <div class="left-column order-2 md:order-1 m-auto">
                         <img src="{{ affiche.getUrl(afficheThumb) }}" alt="{{ affiche.title }}">
                     </div>
-                    <div class="right-column">    
+                    <div class="right-column order-1 md:order-2">    
                         {% if craft.app.session.hasFlash('wheelformSuccess') %}  
                             {% if submission %}
                                 {% set firstName = submission.fields.first_name.value ?? 0 %}

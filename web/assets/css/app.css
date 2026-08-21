@@ -200,6 +200,12 @@
   }
 }
 @layer utilities {
+  .order-1 {
+    order: 1;
+  }
+  .order-2 {
+    order: 2;
+  }
   .col-span-full {
     grid-column: 1 / -1;
   }
@@ -575,6 +581,16 @@
   .max-lg\:max-w-2xl {
     @media (width < 64rem) {
       max-width: var(--container-2xl);
+    }
+  }
+  .md\:order-1 {
+    @media (width >= 48rem) {
+      order: 1;
+    }
+  }
+  .md\:order-2 {
+    @media (width >= 48rem) {
+      order: 2;
     }
   }
   .md\:col-span-2 {
