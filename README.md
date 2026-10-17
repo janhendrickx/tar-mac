@@ -10,6 +10,8 @@ Live databank binnen halen en lokaal overschrijven
 Connectie maken met ssh gaat als volgt:
 dit is een snelkoppeling - te vinden in de ~/.ssh/config
 `ssh tarmac`
+Het ww staat in mijn webhosting sheet onder 'Tarmac Gegevens'
+
 Ofwel de standaard mijn.host manier (met extra poort, poort 22 werkt hier niet)
 `ssh -p 26 xc113002@tar-mac.be`
 

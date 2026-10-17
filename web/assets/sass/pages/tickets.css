@@ -1,5 +1,7 @@
 .tickets {
-    @apply text-white;
+    /* @apply text-white; */
+    @apply text-black;
+    font-weight: 500;
     background-image: url(../img/bg_tickets.jpg);
     background-repeat: no-repeat;
     background-size: cover;

@@ -6,6 +6,9 @@
     --color-secondary: #dd3c39;
     --color-success: #00f;
     --color-error: var(--color-primary);
+    
+    // Specific override for the Captain Kaizer font which did not look OK in bold
+    --font-weight-bold: var(--font-weight-medium);
 
     --container-center: true;
     --container-padding: 1rem;
