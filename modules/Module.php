@@ -31,7 +31,7 @@ class Module extends BaseModule
                         $this->sendToGoogleSheetsFast();
                     } else {
                         $ticketWoord = ($amount > 1) ? 'tickets' : 'ticket';
-                        $adminSubject = "Bestelling van {$amount} {$ticketWoord} voor The Flexistantialists op 03/10 o.n.v. {$volledigeNaam}";
+                        $adminSubject = "Bestelling van {$amount} {$ticketWoord} voor Captain Kaizer en The Stopkes op vrijdag 11/12 o.n.v. {$volledigeNaam}";
                         $event->message->setSubject($adminSubject);
                         // ADMIN EMAIL: Pas Reply-To aan naar de gebruiker
                         $event->message->setReplyTo([$userEmail => $volledigeNaam]);
@@ -52,7 +52,7 @@ class Module extends BaseModule
             'tickets'       => $_POST['amount'] ?? '',
         ];
         
-        $webhookUrl = 'https://script.google.com/macros/s/AKfycbzOYFX_jnRTMQ87zGHljCP3rogKys1ebCxsdk69ziohUBAtf4eljX0WF-xTNZD01XPliQ/exec';
+        $webhookUrl = 'https://script.google.com/macros/s/AKfycbyecldhvOQkRMhEM2kDnQG4Z1NV3ZbuQDXCcsEL_AGkolS7HFv3NeUkT5_klm6nURnTEQ/exec';
         $client = Craft::createGuzzleClient();
         try {
             $promise = $client->postAsync($webhookUrl, [

@@ -71,7 +71,7 @@ label.required::after {
 
 .btn-secondary {
   /* v4 syntax: kleur/percentage */
-  @apply bg-secondary text-black hover:bg-secondary/90 shadow-sm focus:ring-secondary;
+  @apply bg-secondary text-white hover:bg-secondary/90 shadow-sm focus:ring-secondary;
 }
 
 /* Extra spacing tussen velden */

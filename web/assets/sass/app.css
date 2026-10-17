@@ -2,16 +2,16 @@
 @source "../../templates/**/*.twig";
 
 @theme {
-    --color-primary: #d2242a;
-    --color-secondary: #57c5ee;
+    --color-primary: #dd3c39;
+    --color-secondary: #dd3c39;
     --color-success: #00f;
     --color-error: var(--color-primary);
 
     --container-center: true;
     --container-padding: 1rem;
 
-    --font-sans: "Montserrat", sans-serif;
-    --font-heading: "Nunito Sans", sans-serif;
+    --font-sans: "Barlow Condensed", sans-serif;
+    --font-heading: "Bebas Neue", sans-serif;
 }
 
 /* Importeer je componenten HIER */
@@ -47,6 +47,15 @@
 
         @media (width >=1536px) {
             max-width: 1320px;
+        }
+    }
+
+    a {
+        @apply text-secondary;
+        text-decoration: underline;
+        transition: all 0.3s ease-in-out;
+        &:hover {
+            opacity: 0.8;
         }
     }
 

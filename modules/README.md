@@ -11,8 +11,8 @@
 1. Create a new tab in the Google Sheet (use one word to prevent errors)
 2. Change the Google script (https://script.google.com/home) in the project 'Tickets Tarmac' - https://script.google.com/home/projects/19_rIRuo_DISZTBFIv3biJbFyFEvDrj7CysbfOZ4xY00kdTNCgNtv39nr/edit 
 3. Replace the old data in code.gs - mostly replace the old name of the tab with the new one, and the ticket price. Both are on top of the code, lines 3 & 4
-    `var SHEET_NAAM = 'Flexistantialists';`
-    `var prijsPerTicket = 12;`
+    `var SHEET_NAAM = 'Captain Kaizer';`
+    `var prijsPerTicket = 10;`
 4. Click `Implementeren` on top of the page, give it a name ('new event' or something like that) and copy the web-app URL
 5. IMPORTANT!! Paste the web-app url in line 55 of the Module.php file - if not the changes WILL NOT WORK
     `$webhookUrl = 'https://script.google.com/macros/s/thisisanexample/exec';`

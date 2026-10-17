@@ -1,4 +1,27 @@
-dateModified: 1787235908
+dateModified: 1792165027
+elementSources:
+  craft\elements\Entry:
+    -
+      defaultSort:
+        - postDate
+        - desc
+      defaultViewMode: ''
+      disabled: false
+      key: '*'
+      page: Entries
+      tableAttributes:
+        - status
+        - section
+        - postDate
+        - expiryDate
+        - link
+        - 'field:b7319cb1-9102-42ef-b0c7-c76d4548c184' # Einddatum
+        - 'field:32d29400-2b6b-4315-b39d-f1943a6d8cdc' # Einduur
+      type: native
+    -
+      key: singles
+      page: Entries
+      type: native
 email:
   fromEmail: info@tar-mac.be
   fromName: Tarmac
@@ -66,10 +89,10 @@ plugins:
       volume_id: ''
 system:
   edition: solo
-  live: true
+  live: false
   name: Tarmac
   retryDuration: null
-  schemaVersion: 5.10.0.0
+  schemaVersion: 5.11.0.2
   timeZone: Europe/Brussels
 users:
   allowPublicRegistration: false
