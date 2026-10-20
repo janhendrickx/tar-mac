@@ -52,7 +52,7 @@ class Module extends BaseModule
             'tickets'       => $_POST['amount'] ?? '',
         ];
         
-        $webhookUrl = 'https://script.google.com/macros/s/AKfycbyecldhvOQkRMhEM2kDnQG4Z1NV3ZbuQDXCcsEL_AGkolS7HFv3NeUkT5_klm6nURnTEQ/exec';
+        $webhookUrl = 'https://script.google.com/macros/s/AKfycbwSXjFHNKrqOkkbj_nohAKeKrom_L9hcoxJGxhCFrX0zkOQLnwFD3VZ8njkou_5KP_iQg/exec';
         $client = Craft::createGuzzleClient();
         try {
             $promise = $client->postAsync($webhookUrl, [
